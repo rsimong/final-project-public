@@ -1,0 +1,56 @@
+#auth-layout {
+  width: 100%;
+  max-width: 500px;
+  padding: 0;
+  margin: 0 auto;
+  display: block;
+  overflow-x: hidden;
+}
+
+#auth-layout>.auth-layout--logo,
+#auth-layout>.auth-layout--tabs,
+#auth-layout>.auth-layout--tabs>.auth-layout--tabs-list,
+#auth-layout>.auth-layout--tabs>.auth-layout--tabs-list>.auth-layout--tabs--tab {
+  width: 100%;
+}
+
+#auth-layout>.auth-layout--logo {
+  padding: 35px 0;
+}
+
+#auth-layout>.auth-layout--tabs {
+  margin-bottom: 20px;
+  box-shadow: 0 16px 30px -10px rgba(0, 0, 0, 0.07);
+}
+
+#auth-layout>.auth-layout--tabs>.auth-layout--tabs-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+#auth-layout>.auth-layout--tabs>.auth-layout--tabs-list>.auth-layout--tabs--tab {
+  height: 55px;
+  border-bottom: 4px solid white;
+  font-weight: 500;
+  color: #c7c9d2;
+  text-align: center;
+  transition: 0.25s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+#auth-layout>.auth-layout--tabs>.auth-layout--tabs-list>.auth-layout--tabs--tab.active {
+  border-bottom-color: #4967ff;
+  color: inherit;
+}
+
+#auth-layout>.auth-layout--content {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 40px 30px;
+  display: block;
+}

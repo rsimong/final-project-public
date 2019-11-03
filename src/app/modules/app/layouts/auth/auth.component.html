@@ -1,0 +1,18 @@
+<div id="auth-layout">
+  <div class="auth-layout--logo">
+    <app-simplify-logo></app-simplify-logo>
+  </div>
+  <div class="auth-layout--tabs">
+    <ul class="auth-layout--tabs-list">
+      <li class="auth-layout--tabs--tab" routerLink="./login" routerLinkActive="active">
+        Login
+      </li>
+      <li class="auth-layout--tabs--tab" routerLink="./signup" routerLinkActive="active">
+        Sign Up
+      </li>
+    </ul>
+  </div>
+  <div class="auth-layout--content">
+    <router-outlet></router-outlet>
+  </div>
+</div>
