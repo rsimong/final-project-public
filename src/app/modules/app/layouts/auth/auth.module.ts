@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 import { AuthRoutingModule } from './auth-routing.module';
 
 /* Import Shared Module */
@@ -19,6 +20,7 @@ import { SignupComponent } from './layouts/signup/signup.component';
   imports: [
     CommonModule,
     AuthRoutingModule,
+    ReactiveFormsModule,
     SharedModule
   ],
   providers: []

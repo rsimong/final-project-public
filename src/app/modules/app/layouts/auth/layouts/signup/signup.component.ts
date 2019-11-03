@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 
 @Component({
@@ -8,10 +9,27 @@ import { Title } from '@angular/platform-browser';
 })
 export class SignupComponent implements OnInit {
 
-  constructor(private titleService: Title) { }
+  signupForm = this.fb.group({
+    user: ['', Validators.required],
+    pass: ['', Validators.required],
+    confirmPass: ['', Validators.required]
+  });
+
+  constructor(
+    private fb: FormBuilder,
+    private titleService: Title
+  ) { }
 
   ngOnInit() {
     this.titleService.setTitle('Simplify | Sign Up');
+  }
+
+  onSubmit() {
+    if (this.signupForm.invalid) {
+      return;
+    }
+
+    console.log(this.signupForm.value);
   }
 
 }

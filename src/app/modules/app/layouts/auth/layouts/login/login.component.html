@@ -1,15 +1,33 @@
 <div id="login-layout">
   <div class="login-layout--login">
-    <form>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" autocomplete="off">
       <label>
-        <span>Username</span>
-        <input type="text" placeholder="Username" />
+        <ng-container *ngIf="!lastUser.detected; then showUserField; else showLastUser"></ng-container>
+        <ng-template #showUserField>
+          <span>Username</span>
+          <input type="text" placeholder="Username" formControlName="user" name="user" autocomplete="off" />
+        </ng-template>
+        <ng-template #showLastUser>
+          <div class="login-layout--last-user">
+            <div class="login-layout--last-user--name">
+              <p>
+                Hello again,
+                <span>{{ lastUser.user }}</span>
+              </p>
+              <p (click)="allowEditUserField()">This isn't me</p>
+            </div>
+            <div class="login-layout--last-user--avatar">
+              <div [style.background-image]="'url(' + lastUser.avatar + ')'"></div>
+            </div>
+          </div>
+          <input type="hidden" formControlName="user" name="user" autocomplete="off" />
+        </ng-template>
       </label>
       <label>
         <span>Password</span>
-        <input type="password" placeholder="Password" />
+        <input type="password" placeholder="Password" formControlName="pass" name="pass" autocomplete="off" />
       </label>
-      <button type="button">Login</button>
+      <button type="submit">Login</button>
       <p>Forgot Password</p>
     </form>
   </div>
