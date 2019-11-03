@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { LoginComponent } from './layouts/login/login.component';
+import { LoginComponent } from './layouts/auth/layouts/login/login.component';
 
 const routes: Routes = [
     {
-        path: 'login',
-        component: LoginComponent
+        path: 'auth',
+        loadChildren: () => import('./layouts/auth/auth.module').then(m => m.AuthModule)
+    },
+    {
+        path: '**',
+        redirectTo: 'auth'
     }
 ];
 

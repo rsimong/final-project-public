@@ -1,0 +1,123 @@
+#login-layout {
+  width: 100%;
+  padding: 0;
+  margin: 0 auto;
+  display: block;
+}
+
+#login-layout>.login-layout--login,
+#login-layout>.login-layout--login>form,
+#login-layout>.login-layout--login>form>label,
+#login-layout>.login-layout--login>form>label>*,
+#login-layout>.login-layout--login>form>button,
+#login-layout>.login-layout--login>form>p,
+#login-layout>.login-layout--signup,
+#login-layout>.login-layout--signup>button,
+#login-layout>.login-layout--follow,
+#login-layout>.login-layout--follow>ul {
+  width: 100%;
+  display: inline-block;
+}
+
+#login-layout>.login-layout--login>form>label {
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+#login-layout>.login-layout--login>form>label>* {
+  display: block;
+}
+
+#login-layout>.login-layout--login>form>label>span {
+  margin-bottom: 5px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #c7c9d2;
+}
+
+#login-layout>.login-layout--login>form>label>input {
+  height: 60px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  box-shadow: 0 10px 18px 6px rgb(236, 239, 255);
+}
+
+#login-layout>.login-layout--login>form>button {
+  height: 60px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 18px;
+  font-weight: 500;
+  color: white;
+  box-shadow: 0 10px 30px -10px #3eb0d5;
+  background-image: linear-gradient(90deg, #5a77fe, #25e4af);
+  user-select: none;
+  cursor: pointer;
+}
+
+#login-layout>.login-layout--login>form>p {
+  margin: 20px 0;
+  font-size: 15px;
+  font-weight: 500;
+  color: #5a77fe;
+  cursor: pointer;
+}
+
+#login-layout>.login-layout--signup {
+  margin: 20px 0;
+  margin-top: 10px;
+  padding: 20px 0;
+  padding-top: 30px;
+  border-top: 1px solid #ebebeb;
+}
+
+#login-layout>.login-layout--signup>button {
+  height: 60px;
+  padding: 0 calc(12% + 20px);
+  border: 2px solid #5a77fe;
+  border-radius: 6px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #5a77fe;
+  background-color: transparent;
+  user-select: none;
+  cursor: pointer;
+}
+
+#login-layout>.login-layout--signup>button>i.material-icons {
+  top: 50%;
+  left: 6%;
+  margin-right: 10px;
+  color: inherit;
+  transform: translate(0%, -50%);
+  position: absolute;
+}
+
+#login-layout>.login-layout--follow>ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#login-layout>.login-layout--follow>ul>li {
+  padding: 0 20px;
+}
+
+#login-layout>.login-layout--follow>ul>li>* {
+  font-size: 24px;
+}
+
+#login-layout>.login-layout--follow>ul>:nth-child(1)>* {
+  color: #5a77fe;
+}
+
+#login-layout>.login-layout--follow>ul>:nth-child(2)>* {
+  color: #3fafd5;
+}
+
+#login-layout>.login-layout--follow>ul>:nth-child(3)>* {
+  color: #25e4af;
+}
