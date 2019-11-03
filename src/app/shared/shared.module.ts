@@ -5,10 +5,14 @@ import { SimplifyLogoComponent } from '@shared/components/simplify-logo/simplify
 
 
 @NgModule({
-  declarations: [SimplifyLogoComponent],
+  declarations: [
+    SimplifyLogoComponent
+  ],
   imports: [
     CommonModule
   ],
-  exports: [SimplifyLogoComponent]
+  exports: [
+    SimplifyLogoComponent
+  ]
 })
 export class SharedModule { }

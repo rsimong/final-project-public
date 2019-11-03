@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthRoutingModule } from './auth-routing.module';
 
-/* Import Shared Component */
-import { SimplifyLogoComponent } from '@shared/components/simplify-logo/simplify-logo.component';
+/* Import Shared Module */
+import { SharedModule } from '@shared/shared.module';
 
 /* Import Layouts */
 import { AuthComponent } from './auth.component';
@@ -14,12 +14,13 @@ import { SignupComponent } from './layouts/signup/signup.component';
   declarations: [
     AuthComponent,
     LoginComponent,
-    SimplifyLogoComponent,
     SignupComponent
   ],
   imports: [
     CommonModule,
-    AuthRoutingModule
-  ]
+    AuthRoutingModule,
+    SharedModule
+  ],
+  providers: []
 })
 export class AuthModule { }
