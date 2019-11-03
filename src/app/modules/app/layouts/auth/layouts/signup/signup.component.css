@@ -58,9 +58,9 @@
 }
 
 #signup-layout>.signup-layout--follow {
-  margin: 20px 0;
+  margin: 0;
   margin-top: 40px;
-  padding: 20px 0;
+  padding: 0;
   padding-top: 30px;
   border-top: 1px solid #ebebeb;
 }
