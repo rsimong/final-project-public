@@ -1,19 +1,20 @@
 <div id="signup-layout">
   <div class="signup-layout--signup">
-    <form>
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" autocomplete="off">
       <label>
         <span>Username</span>
-        <input type="text" placeholder="Username" />
+        <input type="text" placeholder="Username" formControlName="user" name="user" autocomplete="off" />
       </label>
       <label>
         <span>Password</span>
-        <input type="password" placeholder="Password" />
+        <input type="password" placeholder="Password" formControlName="pass" name="pass" autocomplete="off" />
       </label>
       <label>
         <span>Confirm Password</span>
-        <input type="password" placeholder="Confirm Password" />
+        <input type="password" placeholder="Confirm Password" formControlName="confirmPass" name="confirm-pass"
+          autocomplete="off" />
       </label>
-      <button type="button">Sign Up</button>
+      <button type="submit">Sign Up</button>
     </form>
   </div>
   <div class="signup-layout--follow">
