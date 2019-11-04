@@ -6,7 +6,9 @@ import { AppRoutingModule } from './app-routing.module';
   declarations: [],
   imports: [
     CommonModule,
-    AppRoutingModule,
+    AppRoutingModule
+  ],
+  providers: [
   ]
 })
 export class AppModule { }

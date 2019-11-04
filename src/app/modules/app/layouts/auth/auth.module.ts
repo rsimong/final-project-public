@@ -23,6 +23,7 @@ import { SignupComponent } from './layouts/signup/signup.component';
     ReactiveFormsModule,
     SharedModule
   ],
-  providers: []
+  providers: [
+  ]
 })
 export class AuthModule { }
