@@ -24,11 +24,16 @@
       "@modules/*": ["app/modules/*"],
       "@shared/*": ["app/shared/*"],
       "@models/*": ["app/shared/models/*"],
-      "@core/*": ["app/core/*"]
-    }
+      "@core/*": ["app/core/*"],
+      "@assets/*": ["assets/*"],
+      "@media/*": ["assets/media/*"],
+      "@fakedb/*": ["assets/db/*"]
+    },
+    "resolveJsonModule": true,
+    "esModuleInterop": true
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true
-  }
+  },
 }
