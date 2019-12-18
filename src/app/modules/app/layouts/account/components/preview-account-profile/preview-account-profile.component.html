@@ -1,0 +1,42 @@
+<div class="preview-account-profile" [ngClass]="{ 
+    'pap-gmail': account.type === 'gmail',
+    'pap-slack': account.type === 'slack',
+    'pap-facebook': account.type === 'facebook',
+    'pap-twitter': account.type === 'twitter',
+    'news-notification': account.news
+ }">
+  <div class="pap-user-pic">
+    <div class="pap-up-avatar" [style.background-image]="'url(' + account.avatar + ')'">
+    </div>
+    <div class="pap-up-platform">
+      <ng-container [ngSwitch]="account.type">
+        <ng-container *ngSwitchCase="'gmail'">
+          <i class="fab fa-google"></i>
+        </ng-container>
+        <ng-container *ngSwitchCase="'slack'">
+          <i class="fab fa-slack"></i>
+        </ng-container>
+        <ng-container *ngSwitchCase="'facebook'">
+          <i class="fab fa-facebook-f"></i>
+        </ng-container>
+        <ng-container *ngSwitchCase="'twitter'">
+          <i class="fab fa-twitter"></i>
+        </ng-container>
+        <ng-container *ngSwitchDefault>
+          <i class="fas fa-question"></i>
+        </ng-container>
+      </ng-container>
+    </div>
+  </div>
+  <!-- <div class="pap-user-card">
+    <div class="pap-uc-bg" [style.background-image]="'url(' + account.avatar + ')'"></div>
+    <div class="pap-uc-details">
+      <div class="pap-uc-details--profile">
+        <div class="pap-uc-details--profile-name">
+          <h3>{{ account.name || 'Júlia Martínez' }}</h3>
+          <p>{{ account.username }}</p>
+        </div>
+      </div>
+    </div>
+  </div> -->
+</div>
