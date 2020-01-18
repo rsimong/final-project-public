@@ -15,7 +15,7 @@ const routes: Routes = [
         component: DashboardComponent
       },
       {
-        path: 'template',
+        path: 't',
         children: [
           {
             path: 'mail/:accountId',

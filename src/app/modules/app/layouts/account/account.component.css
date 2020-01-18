@@ -22,8 +22,8 @@
 }
 
 #content {
-  width: calc(100% - 96px);
-  margin-left: 96px;
+  width: calc(100% - 360px);
+  margin-left: 360px;
   background-color: #eff2f9;
   z-index: 1;
 }
