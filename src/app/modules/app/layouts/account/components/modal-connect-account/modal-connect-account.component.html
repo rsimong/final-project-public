@@ -61,6 +61,9 @@
         </div>
         <div class="results--content">
           <ul class="accounts-list">
+            <ng-container *ngIf="loading">
+              Loading...
+            </ng-container>
             <ng-container *ngFor="let api of integrations">
               <li class="al--item">
                 <div class="api-card">

@@ -1,9 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { AuthenticationService } from '@core/authentication/authentication.service';
-import { User } from '@app/shared/models/users';
+import { User } from '@models/user';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { log } from 'util';
 
 @Component({
   selector: 'app-modal-application-settings',

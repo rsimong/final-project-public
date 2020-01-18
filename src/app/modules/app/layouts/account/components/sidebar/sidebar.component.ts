@@ -1,8 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { AuthenticationService } from '@core/authentication/authentication.service';
-import { User } from '@app/shared/models/users';
-import { Account } from '@app/shared/models/account';
+import { User } from '@models/user';
+import { Account } from '@models/account';
 
 @Component({
   selector: 'app-sidebar',
@@ -22,7 +22,7 @@ export class SidebarComponent implements OnInit {
 
   routesByAccountType = {
     'facebook': '',
-    'gmail': 'template/mail/:idAccount',
+    'gmail': 'mail/:idAccount',
     'slack': ''
   };
 
@@ -68,17 +68,18 @@ export class SidebarComponent implements OnInit {
     this.mainMenu = [...mainMenuDefinitive];
   }
 
-  redirectToTemplate(type, id) {
+  setAccountUrl(type, id) {
     if (!this.checkTemplateRoute(type)) {
-      return false;
+      return;
     }
-    const route = this.routesByAccountType[type];
-    console.log(route.replace(':idAccount', id));
+    const route = 'template/' + this.routesByAccountType[type].replace(':idAccount', id);
+    return [route];
   }
 
   checkTemplateRoute(type) {
     const route = this.routesByAccountType[type];
     if (route && route != '') {
+      console.log(route);
       return true;
     } else {
       console.log('Route not defined!');

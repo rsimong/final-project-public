@@ -49,27 +49,29 @@
               <div class="group--content">
                 <ul class="accounts--list">
                   <ng-container *ngFor="let option of section.options">
-                    <li class="accounts--item" (click)="redirectToTemplate(option.type, option._id)">
-                      <div class="account--box">
-                        <div class="account--image">
-                          <div class="accounte--avatar">
-                            <div [style.backgroundImage]="'url(' + option.avatar + ')' | safe: 'style'"></div>
+                    <li class="accounts--item">
+                      <a [routerLink]="setAccountUrl(option.type, option._id)" routerLinkActive="active">
+                        <div class="account--box">
+                          <div class="account--image">
+                            <div class="accounte--avatar">
+                              <div [style.backgroundImage]="'url(' + option.avatar + ')' | safe: 'style'"></div>
+                            </div>
+                          </div>
+                          <div class="account--details">
+                            <div class="account--details--user">
+                              <h5>{{ option.user }}</h5>
+                            </div>
+                            <div class="account--details--username">
+                              <p>{{ option.username }}</p>
+                            </div>
+                          </div>
+                          <div class="account--actions">
+                            <i class="material-icons">
+                              more_vert
+                            </i>
                           </div>
                         </div>
-                        <div class="account--details">
-                          <div class="account--details--user">
-                            <h5>{{ option.user }}</h5>
-                          </div>
-                          <div class="account--details--username">
-                            <p>{{ option.username }}</p>
-                          </div>
-                        </div>
-                        <div class="account--actions">
-                          <i class="material-icons">
-                            more_vert
-                          </i>
-                        </div>
-                      </div>
+                      </a>
                     </li>
                   </ng-container>
                 </ul>

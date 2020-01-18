@@ -188,7 +188,8 @@
 #main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group,
 #main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>div,
 #main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list,
-#main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item {
+#main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item,
+#main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>a {
   width: 100%;
 }
 
@@ -213,11 +214,15 @@
   text-transform: uppercase;
 }
 
-#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item {
+#main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item {
   cursor: pointer;
 }
 
-#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>.account--box {
+#main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>a {
+  cursor: pointer;
+}
+
+#main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>a>.account--box {
   width: 100%;
   padding: 10px 0;
   display: flex;
@@ -226,25 +231,25 @@
   align-items: center;
 }
 
-#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>.account--box>.account--image {
+#main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>a>.account--box>.account--image {
   width: 48px;
   margin-right: 15px;
 }
 
-#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>.account--box>.account--image>.accounte--avatar {
+#main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>a>.account--box>.account--image>.accounte--avatar {
   width: 48px;
   border-radius: 100%;
   overflow: hidden;
 }
 
-#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>.account--box>.account--image>.accounte--avatar::before {
+#main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>a>.account--box>.account--image>.accounte--avatar::before {
   content: '';
   width: 100%;
   padding-top: 100%;
   display: block;
 }
 
-#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>.account--box>.account--image>.accounte--avatar>div {
+#main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>a>.account--box>.account--image>.accounte--avatar>div {
   width: 100%;
   height: 100%;
   top: 0;
@@ -256,36 +261,36 @@
   position: absolute;
 }
 
-#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>.account--box>.account--details {
+#main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>a>.account--box>.account--details {
   width: calc(100% - 86px);
 }
 
-#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>.account--box>.account--details>div,
-#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>.account--box>.account--details>.account--details--user>h5,
-#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>.account--box>.account--details>.account--details--username>p {
+#main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>a>.account--box>.account--details>div,
+#main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>a>.account--box>.account--details>.account--details--user>h5,
+#main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>a>.account--box>.account--details>.account--details--username>p {
   width: 100%;
 }
 
-#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>.account--box>.account--details>.account--details--user>h5 {
+#main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>a>.account--box>.account--details>.account--details--user>h5 {
   font-weight: 400;
 }
 
-#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>.account--box>.account--details>.account--details--username>p {
+#main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>a>.account--box>.account--details>.account--details--username>p {
   color: #999;
   font-size: 16px;
 }
 
-#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>.account--box>.account--actions {
+#main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>a>.account--box>.account--actions {
   width: 24px;
   text-align: center;
 }
 
-#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>.account--box>.account--actions>i {
+#main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>a>.account--box>.account--actions>i {
   opacity: 0.3;
   cursor: pointer;
 }
 
-#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>.account--box>.account--actions>i:hover {
+#main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>a>.account--box>.account--actions>i:hover {
   opacity: 0.7;
 }
 

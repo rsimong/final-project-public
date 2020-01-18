@@ -11,10 +11,12 @@ import { SharedModule } from '@shared/shared.module';
 /* Import Components */
 import { AccountComponent } from './account.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { DashboardComponent } from './layouts/dashboard/dashboard.component';
 import { ModalConnectAccountComponent } from './components/modal-connect-account/modal-connect-account.component';
 import { ModalApplicationSettingsComponent } from './components/modal-application-settings/modal-application-settings.component';
 import { SearcherComponent } from './components/searcher/searcher.component';
+
+/* Layouts */
+import { DashboardComponent } from './layouts/dashboard/dashboard.component';
 import { MailComponent } from './layouts/views/mail/mail.component';
 
 @NgModule({
