@@ -72,7 +72,7 @@ export class SidebarComponent implements OnInit {
     if (!this.checkTemplateRoute(type)) {
       return;
     }
-    const route = 'template/' + this.routesByAccountType[type].replace(':idAccount', id);
+    const route = 't/' + this.routesByAccountType[type].replace(':idAccount', id);
     return [route];
   }
 
