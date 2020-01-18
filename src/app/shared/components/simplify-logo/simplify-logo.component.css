@@ -26,6 +26,11 @@
   height: 48px;
 }
 
+.simplify-logo.size-n {
+  width: 32px;
+  height: 32px;
+}
+
 .simplify-logo::before {
   content: 'S';
   top: 50%;
@@ -49,6 +54,10 @@
 
 .simplify-logo.size-sm::before {
   font-size: 32px;
+}
+
+.simplify-logo.size-n::before {
+  font-size: 24px;
 }
 
 .simplify-logo::after {

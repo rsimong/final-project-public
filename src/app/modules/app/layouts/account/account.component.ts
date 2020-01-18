@@ -9,11 +9,25 @@ import { AuthenticationService } from '@core/authentication/authentication.servi
 })
 export class AccountComponent implements OnInit {
 
+  showStoreModal: boolean;
+  showSettingsModal: boolean;
+
   constructor(
     private authenticationService: AuthenticationService
-  ) { }
+  ) {
+    this.showStoreModal = false;
+    this.showSettingsModal = false;
+  }
 
   ngOnInit() {
+  }
+
+  toogleStoreModal() {
+    this.showStoreModal = !this.showStoreModal;
+  }
+
+  toogleSettingsModal() {
+    this.showSettingsModal = !this.showSettingsModal;
   }
 
   logout() {

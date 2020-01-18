@@ -44,7 +44,9 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 username: user.username,
                 name: user.name,
                 surname: user.surname,
-                avatar: user.avatar
+                avatar: user.avatar,
+                email: user.email,
+                accounts: user.accounts
             });
         }
 

@@ -1,64 +1,96 @@
-<div id="main-menu" [ngClass]="{'menu-expanded': expandMenu}">
-  <div class="mm-logo">
-    <app-simplify-logo [size]="'small'"></app-simplify-logo>
-  </div>
-  <div class="mm-options">
-    <div class="mm-o--filters">
-      <div class="mm-o--filters-searcher">
-        <input type="text" placeholder="Type here..." />
-      </div>
-      <div class="mm-o--filters-sorter">
-        <p>Sort by: <span class="order-applied">Scientifically</span></p>
+<div id="main-menu" class="is-expanded">
+  <div id="mm--header">
+    <div id="mm--logo">
+      <app-simplify-logo [size]="'nano'"></app-simplify-logo>
+    </div>
+    <div id="mm--profile-extended">
+      <div id="mm--profile-extended--container">
+        <div class="profile">
+          <div class="profile-avatar">
+            <div [style.background-image]="'url(' + user.avatar + ')' | safe: 'style'"></div>
+          </div>
+          <div class="profile-details">
+            <div class="profile-details--user">
+              <h4>{{ user.name }} {{ user.surname }}</h4>
+            </div>
+            <div class="profile-details--username">
+              <p>{{ user.email }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="profile-actions">
+          <button class="btn btn-primary btn--edit-profile" type="button" (click)="openSettingsModal()">
+            <i class="material-icons material-icons-outlined">
+              create
+            </i>
+            <span>Edit profile</span>
+          </button>
+          <button class="btn btn-secondary btn--logout" type="button">
+            <span>Logout</span>
+          </button>
+        </div>
       </div>
     </div>
-    <div class="mm-o--list">
-      <ul>
-        <li class="mm-option--account" *ngFor="let account of accountsList"
-          [ngClass]="{'quick-access': account.quickAccess}">
-          <app-preview-account-profile [account]="account"></app-preview-account-profile>
-          <div class="mm-option--account-details hidden-content">
-            <p class="mm-option--ad-user">{{ account.user }} · {{ capitalizeFirstLetter(account.type) }}</p>
-            <p class="mm-option--ad-username">{{ account.username }}</p>
-          </div>
-        </li>
-        <li class="add-new">
-          <i class="material-icons">
-            add
-          </i>
-        </li>
+  </div>
+  <div id="mm--main">
+    <div id="mm--searcher-and-filters">
+      <div id="mm--saf--seacher">
+        <app-searcher [placeholderValue]="'What are you looking for?'"></app-searcher>
+      </div>
+    </div>
+    <div id="mm--accounts">
+      <ul class="accounts--list">
+        <ng-container *ngFor="let section of mainMenu">
+          <li class="accounts--list--groups">
+            <div class="accounts--group">
+              <div class="group--head">
+                <h4>{{ section.name }}</h4>
+              </div>
+              <div class="group--content">
+                <ul class="accounts--list">
+                  <ng-container *ngFor="let option of section.options">
+                    <li class="accounts--item" (click)="redirectToTemplate(option.type, option._id)">
+                      <div class="account--box">
+                        <div class="account--image">
+                          <div class="accounte--avatar">
+                            <div [style.backgroundImage]="'url(' + option.avatar + ')' | safe: 'style'"></div>
+                          </div>
+                        </div>
+                        <div class="account--details">
+                          <div class="account--details--user">
+                            <h5>{{ option.user }}</h5>
+                          </div>
+                          <div class="account--details--username">
+                            <p>{{ option.username }}</p>
+                          </div>
+                        </div>
+                        <div class="account--actions">
+                          <i class="material-icons">
+                            more_vert
+                          </i>
+                        </div>
+                      </div>
+                    </li>
+                  </ng-container>
+                </ul>
+              </div>
+            </div>
+          </li>
+        </ng-container>
       </ul>
     </div>
   </div>
-  <div class="mm-profile">
-    <ul>
-      <li>
-        <div class="user">
-          <div class="user-avatar">
-            <div [style.background-image]="'url(' + user.avatar + ')'"></div>
-          </div>
-          <div class="user-details hidden-content">
-            <div class="user-details--username">
-              <p>Hello again, </p>
-              <h4>Julia Martínez</h4>
-            </div>
-            <!-- <div class="user-details--actions">
-              <ul>
-                <li>Settings</li>
-                <li>Notifications</li>
-                <li>Logout</li>
-              </ul>
-            </div> -->
-          </div>
-        </div>
-      </li>
-      <li class="expand-menu" (click)="toggleExpandMenu()">
+  <div id="mm--footer">
+    <button id="btn-add-account" class="btn btn-full-width btn-primary" type="button" (click)="openStoreModal()">
+      <div class="btn-icon">
         <i class="material-icons">
-          keyboard_arrow_right
+          add
         </i>
-        <div class="hidden-content">
-          <span>Collapse Menu</span>
-        </div>
-      </li>
-    </ul>
+      </div>
+      <div class="btn-text">
+        <span class="btn-title">Add another account!</span>
+        <span class="btn-info">There are many options available</span>
+      </div>
+    </button>
   </div>
 </div>

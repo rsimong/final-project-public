@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { AuthenticationService } from '@core/authentication/authentication.service';
 import { User } from '@app/shared/models/users';
+import { Account } from '@app/shared/models/account';
 
 @Component({
   selector: 'app-sidebar',
@@ -10,52 +11,20 @@ import { User } from '@app/shared/models/users';
 })
 export class SidebarComponent implements OnInit {
 
+  @Output() changeStateStoreModal = new EventEmitter<Boolean>();
+  @Output() changeStateSettingsModal = new EventEmitter<Boolean>();
+
   user: User;
 
   expandMenu = false;
 
-  accountsList = [
-    {
-      type: 'gmail',
-      avatar: 'https://cdn.pixabay.com/photo/2017/09/01/21/53/blue-2705642_1280.jpg',
-      user: 'Julia Martínez',
-      username: 'jmartinez@gmail.com',
-      quickAccess: true,
-      news: true
-    },
-    {
-      type: 'outlook',
-      avatar: '',
-      user: 'Julia M',
-      username: 'jmartinez@outlook.com',
-      quickAccess: false,
-      news: false
-    },
-    {
-      type: 'slack',
-      avatar: 'https://cdn.pixabay.com/photo/2016/01/19/17/48/woman-1149911_1280.jpg',
-      user: 'Jmartinez',
-      username: 'jmartinez@gmail.com',
-      quickAccess: true,
-      news: false
-    },
-    {
-      type: 'twitter',
-      avatar: '',
-      user: 'Julia M',
-      username: 'jmartinez@outlook.com',
-      quickAccess: false,
-      news: false
-    },
-    {
-      type: 'facebook',
-      avatar: '',
-      user: 'Julia M',
-      username: 'jmartinez@outlook.com',
-      quickAccess: false,
-      news: false
-    }
-  ];
+  mainMenu = [];
+
+  routesByAccountType = {
+    'facebook': '',
+    'gmail': 'template/mail/:idAccount',
+    'slack': ''
+  };
 
   constructor(
     private authenticationService: AuthenticationService
@@ -63,14 +32,66 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.authenticationService.currentUserValue;
+    this.setMainMenu();
   }
 
   toggleExpandMenu() {
-    // this.expandMenu = !this.expandMenu;
+    this.expandMenu = !this.expandMenu;
   }
 
   capitalizeFirstLetter(text) {
     return text.charAt(0).toUpperCase() + text.slice(1);
+  }
+
+  setMainMenu() {
+    const sections = [];
+    const mainMenuTemp = {};
+    const mainMenuDefinitive = [];
+    this.user.accounts.forEach((account: Account) => {
+      const isNew = sections.find((section) => section === account.type);
+      if (!isNew) {
+        sections.push(account.type);
+        mainMenuTemp[account.type] = [account];
+      } else {
+        mainMenuTemp[account.type].push(account);
+      }
+    });
+
+    sections.forEach((section) => {
+      mainMenuDefinitive.push({
+        name: section,
+        options: mainMenuTemp[section].sort((a, b) => (a.user > b.user) ? 1 : ((b.user > a.user) ? -1 : 0))
+      });
+    });
+
+    mainMenuDefinitive.sort((a, b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
+    this.mainMenu = [...mainMenuDefinitive];
+  }
+
+  redirectToTemplate(type, id) {
+    if (!this.checkTemplateRoute(type)) {
+      return false;
+    }
+    const route = this.routesByAccountType[type];
+    console.log(route.replace(':idAccount', id));
+  }
+
+  checkTemplateRoute(type) {
+    const route = this.routesByAccountType[type];
+    if (route && route != '') {
+      return true;
+    } else {
+      console.log('Route not defined!');
+      return false;
+    }
+  }
+
+  openStoreModal() {
+    this.changeStateStoreModal.emit(true);
+  }
+
+  openSettingsModal() {
+    this.changeStateSettingsModal.emit(true);
   }
 
 }

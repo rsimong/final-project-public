@@ -1,0 +1,8 @@
+<div class="searcher" [ngClass]="{'is-minified': isMinified}" (click)="isMinified ? expandSearcher() : false">
+  <form [formGroup]="searcherForm">
+    <label>
+      <i class="material-icons">search</i>
+      <input type="text" [placeholder]="placeholderValue" formControlName="searcher" />
+    </label>
+  </form>
+</div>
