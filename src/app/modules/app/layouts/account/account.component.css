@@ -22,8 +22,10 @@
 }
 
 #content {
-  width: calc(100% - 360px);
-  margin-left: 360px;
+  /* width: calc(100% - 360px); */
+  width: calc(100% - 88px);
+  /* margin-left: 360px; */
+  margin-left: 88px;
   background-color: #eff2f9;
   z-index: 1;
 }
