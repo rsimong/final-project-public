@@ -5,6 +5,10 @@ const routes: Routes = [
   {
     path: 'app',
     loadChildren: () => import('./modules/app/app.module').then(m => m.AppModule)
+  },
+  {
+    path: '**',
+    redirectTo: 'app'
   }
 ];
 

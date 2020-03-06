@@ -10,7 +10,7 @@ export class User {
     // tslint:disable-next-line:ban-types
     notifications: Object[];
     // tslint:disable-next-line:ban-types
-    accounts: Object[];
+    accounts: Account[];
     createdAt: string;
     isDisabled: boolean;
     authdata?: any;

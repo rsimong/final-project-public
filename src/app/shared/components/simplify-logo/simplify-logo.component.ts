@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-simplify-logo',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./simplify-logo.component.css']
 })
 export class SimplifyLogoComponent implements OnInit {
+
+  @Input() size = 'medium';
 
   constructor() { }
 

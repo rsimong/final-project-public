@@ -1,40 +1,57 @@
 /* You can add global styles to this file, and also import other style files */
 
-/* Logo */
-.simplify-logo {
-  width: 72px;
-  height: 72px;
+.btn {
+  height: 45px;
+  padding: 0 20px;
   margin: 0 auto;
   border: none;
-  border-radius: 20px;
-  background-color: #eeeeee;
-  background-image: linear-gradient(45deg, #5a77fe, #25e4af) !important;
-  overflow: hidden;
-  display: block;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
 
-.simplify-logo::before {
-  content: 'S';
-  top: 50%;
-  left: 50%;
-  font-family: 'Raleway', sans-serif;
-  font-size: 48px;
-  font-weight: 700;
+.btn.btn-full-width {
+  width: 100%;
+}
+
+.btn.btn-rounded {
+  border-radius: 40px;
+}
+
+.btn.btn-padding-x2 {
+  padding: 0 40px;
+}
+
+.btn>i {
+  margin-left: -3px;
+  margin-right: 6px;
+  font-size: 18px;
+}
+
+.btn.btn-only-icon>i {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.btn.btn-primary {
   color: white;
-  transform: translate(-50%, -50%);
-  position: absolute;
-  z-index: 2;
+  background-color: #5a77fe;
+  box-shadow: 0 5px 10px #dbdbdb;
 }
 
-.simplify-logo::after {
-  content: '';
-  width: 200%;
-  height: 80%;
-  top: 50%;
-  left: 50%;
-  border-radius: 100%;
-  transform: translate(-50%, -50%) rotate(45deg);
-  background-color: rgba(0, 0, 0, 0.1);
-  position: absolute;
-  z-index: 1;
+.btn.btn-secondary {
+  background-color: #f0f0f0;
+}
+
+.btn.btn-transparent {
+  border: none;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.btn>* {
+  color: inherit;
 }

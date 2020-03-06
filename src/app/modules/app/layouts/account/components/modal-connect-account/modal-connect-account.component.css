@@ -1,0 +1,432 @@
+:host {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  z-index: 9;
+}
+
+.modal-shadow {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: background-color 0.4s;
+  position: fixed;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.modal-shadow:hover {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal {
+  width: 100%;
+  max-width: 1150px;
+  height: 100%;
+  max-height: 700px;
+  top: 50%;
+  left: 50%;
+  border-radius: 4px;
+  box-shadow: 0 5px 10px #b2b2b2;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  transition: box-shadow 0.4s;
+  position: absolute;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.modal-shadow:hover+.modal {
+  box-shadow: 0 5px 10px #747474;
+}
+
+.modal>.m--header,
+.modal>.m--content {
+  width: 100%;
+}
+
+.modal>.m--content {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.modal>.m--content>div {
+  height: 100%;
+  padding: 40px;
+}
+
+.modal>.m--content>.m--content-left {
+  width: 240px;
+  border-right: 1px solid #efefef;
+}
+
+.modal>.m--content>.m--content-right {
+  width: calc(100% - 240px);
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.modal>.m--content>.m--content-left>.sections,
+.modal>.m--content>.m--content-left>.sections>.sections--group,
+.modal>.m--content>.m--content-left>.sections>.sections--group>div,
+.modal>.m--content>.m--content-left>.sections>.sections--group>.sections--group--title>h4,
+.modal>.m--content>.m--content-left>.sections>.sections--group>.sections--group--list>ul,
+.modal>.m--content>.m--content-left>.sections>.sections--group>.sections--group--list>ul>.sections--item {
+  width: 100%;
+}
+
+.modal>.m--content>.m--content-left>.sections>.sections--group:not(:last-of-type) {
+  margin-bottom: 40px;
+}
+
+.modal>.m--content>.m--content-left>.sections>.sections--group>.sections--group--title {
+  margin-bottom: 5px;
+}
+
+.modal>.m--content>.m--content-left>.sections>.sections--group>.sections--group--title>h4 {
+  font-size: 14px;
+  font-weight: 500;
+  color: #9ba0a7;
+  text-transform: uppercase;
+}
+
+.modal>.m--content>.m--content-left>.sections>.sections--group>.sections--group--list>ul>.sections--item {
+  padding: 6px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.modal>.m--content>.m--content-left>.sections>.sections--group>.sections--group--list>ul>.sections--item.active {
+  font-weight: 500;
+  color: #5a77fe;
+  opacity: 1;
+}
+
+.modal>.m--content>.m--content-left>.sections>.sections--group>.sections--group--list>ul>.sections--item.active>span {
+  font: inherit;
+  color: inherit;
+}
+
+.modal>.m--content>.m--content-right>.topbar-actions {
+  width: 100%;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal>.m--content>.m--content-right>.topbar-actions>.ta--searcher {
+  width: 100%;
+  max-width: 300px;
+}
+
+.modal>.m--content>.m--content-right>.topbar-actions>.ta--notifications>button>i {
+  font-size: 21px;
+  color: #707070;
+}
+
+.modal>.m--content>.m--content-right>.results,
+.modal>.m--content>.m--content-right>.results>div,
+.modal>.m--content>.m--content-right>.results>.results--header .modal>.m--content>.m--content-right>.results>.results--header>h3 {
+  width: 100%;
+}
+
+.modal>.m--content>.m--content-right>.results {
+  padding-bottom: 20px;
+}
+
+.modal>.m--content>.m--content-right>.results>.results--header {
+  margin-bottom: 20px;
+}
+
+.modal>.m--content>.m--content-right>.results>.results--header>h3 {
+  font-size: 36px;
+  font-weight: 300;
+}
+
+.modal>.m--content>.m--content-right>.results>.results--header>p {
+  font-size: 16px;
+  color: #5a77fe;
+}
+
+.modal>.m--content>.m--content-right>.results>.results--content>.accounts-list {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+
+.modal>.m--content>.m--content-right>.results>.results--content>.accounts-list>.al--item {
+  width: calc((100% - (8px * 2)) / 3);
+  margin-bottom: 8px;
+  border-radius: 8px;
+}
+
+.modal>.m--content>.m--content-right>.results>.results--content>.accounts-list>.al--item:not(:nth-child(3n+3)) {
+  margin-right: 8px;
+}
+
+.modal>.m--content>.m--content-right>.results>.results--content>.accounts-list>.al--item:empty {
+  background-color: #f0f0f0;
+}
+
+.modal>.m--content>.m--content-right>.results>.results--content>.accounts-list>.al--item:empty::before {
+  content: '';
+  width: 100%;
+  padding-top: 100%;
+  display: block;
+  position: relative;
+}
+
+.api-card {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 4px;
+  box-shadow: 0 5px 15px #e6e6e6;
+  background-color: white;
+  overflow: hidden;
+}
+
+.api-card>div {
+  width: 100%;
+}
+
+.api-card>.api-card--image {
+  height: 128px;
+  background-color: #ebebeb;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.api-card>.api-card--image>i {
+  font-size: 48px;
+  color: white;
+}
+
+.api-card>.api-card--image::before,
+.api-card>.api-card--image::after {
+  content: '';
+  top: 50%;
+  left: 50%;
+  border-radius: 100%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.1);
+  position: absolute;
+}
+
+.api-card>.api-card--image::before {
+  width: 92px;
+  height: 92px;
+}
+
+.api-card>.api-card--image::after {
+  width: 172px;
+  height: 172px;
+}
+
+.api-card>.api-card--details {
+  padding: 20px;
+}
+
+.api-card>.api-card--details>.api-card--info,
+.api-card>.api-card--details>.api-card--info>.api-card--name,
+.api-card>.api-card--details>.api-card--info>.api-card--description {
+  width: 100%;
+}
+
+.api-card>.api-card--details>.api-card--info {
+  height: 100px;
+  overflow: hidden;
+}
+
+.api-card>.api-card--details>.api-card--info>.api-card--name {
+  margin-bottom: 12px;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.api-card>.api-card--details>.api-card--info>.api-card--description {
+  color: #848484;
+  line-height: 1.3;
+}
+
+.api-card>.api-card--details>.api-card--actions {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.api-card>.api-card--details>.api-card--actions>.btn-primary {
+  width: 100%;
+  margin-right: 8px;
+}
+
+.api-card>.api-card--details>.api-card--actions>.btn-only-icon>i {
+  color: #707070;
+}
+
+.modal>.m--content>.m--content-right>.banner-new-api-request {
+  width: 100%;
+  height: 220px;
+  margin-top: 60px;
+  margin-bottom: 30px;
+  border-radius: 4px;
+  box-shadow: 0 5px 15px #e6e6e6;
+  background-color: #ccc;
+  background-image: linear-gradient(45deg, rgb(141, 100, 230), rgb(210, 102, 178));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.modal>.m--content>.m--content-right>.banner-new-api-request>.bg-waves,
+.modal>.m--content>.m--content-right>.banner-new-api-request>.bg-waves>div {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+
+.modal>.m--content>.m--content-right>.banner-new-api-request>.bg-waves {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.modal>.m--content>.m--content-right>.banner-new-api-request>.bg-waves>div {
+  border: 35px solid rgba(255, 255, 255, .08);
+  border-radius: 100%;
+  background-color: transparent;
+}
+
+.modal>.m--content>.m--content-right>.banner-new-api-request>.bg-waves>div::before {
+  content: '';
+  width: 100%;
+  padding-top: 100%;
+  position: relative;
+  display: inline-block;
+}
+
+.modal>.m--content>.m--content-right>.banner-new-api-request>.bg-waves>div:nth-child(1) {
+  width: 190px;
+}
+
+.modal>.m--content>.m--content-right>.banner-new-api-request>.bg-waves>div:nth-child(2) {
+  width: 340px;
+  border-color: rgba(255, 255, 255, .06);
+}
+
+.modal>.m--content>.m--content-right>.banner-new-api-request>.bg-waves>div:nth-child(3) {
+  width: 490px;
+  border-color: rgba(255, 255, 255, .04);
+}
+
+.modal>.m--content>.m--content-right>.banner-new-api-request>.bnar--message-box {
+  width: auto;
+  height: auto;
+  text-align: center;
+  display: inline-block;
+  z-index: 3;
+}
+
+.modal>.m--content>.m--content-right>.banner-new-api-request>.bnar--message-box>p {
+  width: 90%;
+  margin: 0 auto;
+  color: white;
+  text-align: center;
+  display: block;
+}
+
+.modal>.m--content>.m--content-right>.banner-new-api-request>.bnar--message-box>.bnar--subtitle {
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+.modal>.m--content>.m--content-right>.banner-new-api-request>.bnar--message-box>.bnar--title {
+  max-width: 445px;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.modal>.m--content>.m--content-right>.banner-new-api-request>.bnar--message-box>.bnar--btn {
+  height: auto;
+  padding: 15px 40px;
+  margin-top: 25px;
+  font-size: 17px;
+  font-weight: 700;
+  color: white;
+  /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15); */
+  background-color: rgb(255, 140, 174);
+  /* background-color: rgba(255, 255, 255, 0.2); */
+}
+
+
+
+
+
+
+
+.modal>.m--content>.m--content-right>.banner-new-api-request>.bg {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  z-index: 2;
+}
+
+.modal>.m--content>.m--content-right>.banner-new-api-request>.bg>.fa-telegram-plane:nth-child(1) {
+  left: 50px;
+  bottom: 50px;
+  font-size: 52px;
+  color: rgba(255, 255, 255, 0.9);
+  position: absolute;
+}
+
+.modal>.m--content>.m--content-right>.banner-new-api-request>.bg>.fa-telegram-plane:nth-child(2) {
+  left: 20px;
+  bottom: 40px;
+  font-size: 24px;
+  color: rgba(255, 255, 255, 0.4);
+  position: absolute;
+}
+
+.modal>.m--content>.m--content-right>.banner-new-api-request>.bg>.fa-telegram-plane:nth-child(3) {
+  left: 80px;
+  bottom: 30px;
+  font-size: 21px;
+  color: rgba(255, 255, 255, 0.25);
+  position: absolute;
+}
+
+.modal>.m--content>.m--content-right>.banner-new-api-request>.bg>.fa-telegram-plane:nth-child(4) {
+  left: 40px;
+  bottom: 10px;
+  font-size: 26px;
+  color: rgba(255, 255, 255, 0.6);
+  position: absolute;
+}

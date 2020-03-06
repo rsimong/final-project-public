@@ -1,0 +1,17 @@
+<div id="sidebar" role="menubar">
+  <app-sidebar (changeStateStoreModal)="toogleStoreModal()" (changeStateSettingsModal)="toogleSettingsModal()">
+  </app-sidebar>
+</div>
+<div id="content" role="main">
+  <router-outlet></router-outlet>
+</div>
+
+<!-- Modal :: Store -->
+<ng-container *ngIf="showStoreModal">
+  <app-modal-connect-account (changeStateStoreModal)="toogleStoreModal()"></app-modal-connect-account>
+</ng-container>
+
+<!-- Modal :: Settings -->
+<ng-container *ngIf="showSettingsModal">
+  <app-modal-application-settings (changeStateSettingsModal)="toogleSettingsModal()"></app-modal-application-settings>
+</ng-container>

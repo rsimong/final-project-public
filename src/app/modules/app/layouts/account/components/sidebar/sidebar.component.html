@@ -1,0 +1,103 @@
+<div id="main-menu" [ngClass]="{'is-expanded': expandMenu}" (mouseover)="expandMenu = true"
+  (mouseleave)="expandMenu = false">
+  <div id="mm--header">
+    <div id="mm--logo">
+      <a [routerLink]="[ 'dashboard' ]">
+        <app-simplify-logo [size]="(expandMenu) ? 'nano' : 'small'"></app-simplify-logo>
+      </a>
+    </div>
+    <div id="mm--profile-extended">
+      <div id="mm--profile-extended--container">
+        <div class="profile">
+          <div class="profile-avatar">
+            <div [style.background-image]="'url(' + user.avatar + ')' | safe: 'style'"></div>
+          </div>
+          <div class="profile-details">
+            <div class="profile-details--user">
+              <h4>{{ user.name }} {{ user.surname }}</h4>
+            </div>
+            <div class="profile-details--username">
+              <p>{{ user.email }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="profile-actions">
+          <button class="btn btn-primary btn--edit-profile" type="button" (click)="openSettingsModal()">
+            <i class="material-icons material-icons-outlined">
+              create
+            </i>
+            <span>Edit profile</span>
+          </button>
+          <button class="btn btn-secondary btn--logout" type="button">
+            <span>Logout</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="mm--main">
+    <div id="mm--searcher-and-filters">
+      <div id="mm--saf--seacher">
+        <app-searcher [placeholderValue]="'What are you looking for?'"></app-searcher>
+      </div>
+    </div>
+    <div id="mm--accounts">
+      <ul class="accounts--list">
+        <ng-container *ngFor="let section of mainMenu; let i = index">
+          <li class="accounts--list--groups">
+            <div class="accounts--group" [ngStyle]="{'transition-delay': (expandMenu) ? (0 + (i * 0.1)) + 's' : '' }">
+              <div class="group--head" [ngStyle]="{'transition-delay': (expandMenu) ? (0 + (i * 0.1)) + 's' : '' }">
+                <h4 [ngStyle]="{'transition-delay': (expandMenu) ? ((0.1 * mainMenu.length) + (i * 0.15)) + 's' : '' }">
+                  {{ section.name }}</h4>
+              </div>
+              <div class="group--content">
+                <ul class="accounts--list">
+                  <ng-container *ngFor="let option of section.options">
+                    <li class="accounts--item">
+                      <a [routerLink]="setAccountUrl(option.type, option._id)" routerLinkActive="active">
+                        <div class="account--box">
+                          <div class="account--image">
+                            <div class="account--avatar">
+                              <app-avatar-image [bgValue]="option.avatar || option.username"></app-avatar-image>
+                              <!-- <div [style.backgroundImage]="'url(' + option.avatar + ')' | safe: 'style'"></div> -->
+                            </div>
+                          </div>
+                          <div class="account--details">
+                            <div class="account--details--user">
+                              <h5>{{ option.user }}</h5>
+                            </div>
+                            <div class="account--details--username">
+                              <p>{{ option.username }}</p>
+                            </div>
+                          </div>
+                          <div class="account--actions">
+                            <i class="material-icons">
+                              more_vert
+                            </i>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                  </ng-container>
+                </ul>
+              </div>
+            </div>
+          </li>
+        </ng-container>
+      </ul>
+    </div>
+  </div>
+  <div id="mm--footer">
+    <button id="btn-add-account" class="btn btn-full-width btn-primary" type="button" (click)="openStoreModal()">
+      <div class="btn-icon">
+        <i class="material-icons">
+          add
+        </i>
+      </div>
+      <div class="btn-text">
+        <span class="btn-title">Add another account!</span>
+        <span class="btn-info">There are many options available</span>
+      </div>
+    </button>
+  </div>
+</div>
