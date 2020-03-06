@@ -1,0 +1,111 @@
+<div class="modal-shadow" (click)="closeStoreModal()"></div>
+<div id="modal-connect-account" class="modal">
+  <div class="m--header">
+  </div>
+  <div class="m--content">
+    <div class="m--content-left">
+      <div class="sections">
+        <div class="sections--group">
+          <div class="sections--group--title">
+            <h4>Filters</h4>
+          </div>
+          <div class="sections--group--list">
+            <ul>
+              <li class="sections--item active">
+                <span>All</span>
+              </li>
+              <li class="sections--item">
+                <span>Recently added</span>
+              </li>
+              <li class="sections--item">
+                <span>Most popular</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="sections--group">
+          <div class="sections--group--title">
+            <h4>Categories</h4>
+          </div>
+          <div class="sections--group--list">
+            <ul>
+              <li class="sections--item">
+                <span>Communications</span>
+              </li>
+              <li class="sections--item">
+                <span>Social networks</span>
+              </li>
+              <li class="sections--item">
+                <span>Instant messaging</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="m--content-right">
+      <div class="topbar-actions">
+        <div class="ta--searcher">
+          <app-searcher></app-searcher>
+        </div>
+        <div class="ta--notifications">
+          <button class="btn btn-transparent btn-only-icon">
+            <i class="far fa-bell"></i>
+          </button>
+        </div>
+      </div>
+      <div class="results">
+        <div class="results--header">
+          <h3>Add a new account</h3>
+          <p>You have {{ integrations.length || 0 }} options available to choose from</p>
+        </div>
+        <div class="results--content">
+          <ul class="accounts-list">
+            <ng-container *ngIf="loading">
+              Loading...
+            </ng-container>
+            <ng-container *ngFor="let api of integrations">
+              <li class="al--item">
+                <div class="api-card">
+                  <div class="api-card--image" [style.backgroundColor]="api.brandColor">
+                    <i [attr.class]="api.icon.src"></i>
+                  </div>
+                  <div class="api-card--details">
+                    <div class="api-card--info">
+                      <h4 class="api-card--name">{{ api.name }}</h4>
+                      <p class="api-card--description">{{ api.description }}</p>
+                    </div>
+                    <div class="api-card--actions">
+                      <button class="btn btn-primary" type="button">Connect</button>
+                      <button class="btn btn-only-icon" type="button">
+                        <i class="fas fa-info"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ng-container>
+          </ul>
+        </div>
+      </div>
+      <div class="banner-new-api-request">
+        <div class="bg">
+          <i class="fab fa-telegram-plane"></i>
+          <i class="fab fa-telegram-plane"></i>
+          <i class="fab fa-telegram-plane"></i>
+          <i class="fab fa-telegram-plane"></i>
+        </div>
+        <div class="bg-waves">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <div class="bnar--message-box">
+          <p class="bnar--subtitle">You haven't found what you were looking for?</p>
+          <p class="bnar--title">Make a request for us to add the platform you need</p>
+          <button class="btn btn-rounded bnar--btn">Help us to improve</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

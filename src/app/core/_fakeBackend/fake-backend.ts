@@ -3,10 +3,16 @@ import { HttpRequest, HttpResponse, HttpHandler, HttpEvent, HttpInterceptor, HTT
 import { Observable, of, throwError } from 'rxjs';
 import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
 
-import { User } from '@models/users';
-import fakeUser from '@fakedb/users.json';
+import { AuthenticationService } from '@core/authentication/authentication.service';
+
+import { User } from '@models/user';
+import { Apis } from '@models/apis';
+
+import fakeUser from '@fakedb/user.json';
+import fakeApis from '@fakedb/apis.json';
 
 const users: User[] = [{ ...fakeUser }];
+const apis: Apis[] = [...fakeApis.apis];
 
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
@@ -27,6 +33,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     return authenticate();
                 case url.endsWith('/users') && method === 'GET':
                     return getUsers();
+                case url.endsWith('/apis') && method === 'GET':
+                    return getApis();
                 default:
                     // pass through any requests not handled above
                     return next.handle(request);
@@ -44,13 +52,20 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 username: user.username,
                 name: user.name,
                 surname: user.surname,
-                avatar: user.avatar
+                avatar: user.avatar,
+                email: user.email,
+                accounts: user.accounts
             });
         }
 
         function getUsers() {
             if (!isLoggedIn()) { return unauthorized(); }
             return ok(users);
+        }
+
+        function getApis() {
+            if (!isLoggedIn()) { return unauthorized(); }
+            return ok(apis);
         }
 
         // helper functions
@@ -69,7 +84,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         }
 
         function isLoggedIn() {
-            return headers.get('Authorization') === `Basic ${window.btoa('test:test')}`;
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            return headers.get('Authorization') === `Basic ${currentUser.authdata}`;
         }
     }
 }

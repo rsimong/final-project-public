@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AuthenticationService } from '@core/authentication/authentication.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,13 +8,8 @@ import { AuthenticationService } from '@core/authentication/authentication.servi
 export class AppComponent implements OnInit {
   title = 'Simplify';
 
-  constructor(
-    private authenticationService: AuthenticationService
-  ) { }
+  constructor() { }
 
   ngOnInit(): void {
-    if (localStorage.getItem('currentUser')) {
-      this.authenticationService.logout();
-    }
   }
 }

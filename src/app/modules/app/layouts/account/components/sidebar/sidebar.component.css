@@ -1,0 +1,435 @@
+#main-menu {
+  width: 88px;
+  height: 100%;
+  padding: 15px;
+  transition: width 0.4s, padding 0.4s;
+  transition-delay: 0.4s, 0s;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: hidden;
+}
+
+#main-menu.is-expanded {
+  width: 360px;
+  padding: 20px;
+  border-right: 1px solid #f8f8f8;
+  transition-delay: 0s;
+  /* background-color: white; */
+}
+
+#main-menu>#mm--header,
+#main-menu>#mm--header>#mm--logo,
+#main-menu>#mm--header>#mm--profile-extended,
+#main-menu>#mm--header>#mm--profile-extended>#mm--profile-extended--container,
+#main-menu>#mm--header>#mm--profile-extended>#mm--profile-extended--container>.profile {
+  width: 100%;
+}
+
+#main-menu>#mm--header>#mm--logo {
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: flex-start;
+  position: absolute;
+}
+
+#main-menu>#mm--header>#mm--logo>a {
+  width: 58px;
+  text-align: center;
+  transition: width 0.4s;
+}
+
+#main-menu.is-expanded>#mm--header>#mm--logo>a {
+  width: 32px;
+}
+
+#main-menu>#mm--header>#mm--profile-extended>#mm--profile-extended--container {
+  max-height: 0;
+  padding: 0;
+  border-bottom: 2px solid #f8f8f8;
+  transition: opacity 0.4s, max-height 0.4s, padding 0.4s;
+  transition-delay: 0s;
+  opacity: 0;
+}
+
+#main-menu.is-expanded>#mm--header>#mm--profile-extended>#mm--profile-extended--container {
+  max-height: 500px;
+  padding: 20px;
+  padding-top: 0;
+  opacity: 1;
+  transition-delay: 0.4s, 0s, 0.4s;
+}
+
+#main-menu>#mm--header>#mm--profile-extended>#mm--profile-extended--container>.profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#main-menu>#mm--header>#mm--profile-extended>#mm--profile-extended--container>.profile>.profile-avatar {
+  width: 86px;
+  height: 86px;
+  padding: 8px;
+  margin-bottom: 15px;
+  border-radius: 100%;
+  overflow: hidden;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 0.4s, transform 0.4s;
+  transition-delay: 0s;
+}
+
+#main-menu.is-expanded>#mm--header>#mm--profile-extended>#mm--profile-extended--container>.profile>.profile-avatar {
+  opacity: 1;
+  transform: scale(1);
+  transition-delay: 0.4s;
+}
+
+#main-menu>#mm--header>#mm--profile-extended>#mm--profile-extended--container>.profile>.profile-avatar::before {
+  content: '';
+  width: 100%;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  border-radius: 100%;
+  background-image: linear-gradient(140deg, #5a77fe, #25e4af);
+  transform: translate(-50%, -50%);
+  position: absolute;
+  z-index: 1;
+}
+
+#main-menu>#mm--header>#mm--profile-extended>#mm--profile-extended--container>.profile>.profile-avatar::after {
+  content: '';
+  width: calc(100% - 5px);
+  height: calc(100% - 5px);
+  top: 50%;
+  left: 50%;
+  border-radius: 100%;
+  background-color: white;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  z-index: 2;
+}
+
+#main-menu>#mm--header>#mm--profile-extended>#mm--profile-extended--container>.profile>.profile-avatar>div {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  border-radius: 100%;
+  z-index: 3;
+}
+
+#main-menu>#mm--header>#mm--profile-extended>#mm--profile-extended--container>.profile>.profile-details {
+  width: 100%;
+  opacity: 0;
+  transform: translateY(25%);
+  transition: opacity 0.4s, transform 0.4s;
+  transition-delay: 0s;
+}
+
+#main-menu.is-expanded>#mm--header>#mm--profile-extended>#mm--profile-extended--container>.profile>.profile-details {
+  opacity: 1;
+  transform: translateY(0%);
+  transition-delay: 0.7s;
+}
+
+#main-menu>#mm--header>#mm--profile-extended>#mm--profile-extended--container>.profile>.profile-details>div {
+  width: 100%;
+  text-align: center;
+}
+
+#main-menu>#mm--header>#mm--profile-extended>#mm--profile-extended--container>.profile>.profile-details>.profile-details--user>h4 {
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+#main-menu>#mm--header>#mm--profile-extended>#mm--profile-extended--container>.profile>.profile-details>.profile-details--username>p {
+  color: #aeaeae;
+  white-space: nowrap;
+}
+
+#main-menu>#mm--header>#mm--profile-extended>#mm--profile-extended--container>.profile-actions {
+  width: 100%;
+  padding: 20px 0;
+  padding-bottom: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+#main-menu>#mm--main {
+  width: calc(100% + 35px);
+  height: calc(100% + 20px);
+  margin-left: 30px;
+  margin-bottom: -20px;
+  padding: 20px 5px;
+  padding-top: 84px;
+  overflow: hidden;
+  overflow-y: scroll;
+  transition: padding 0.4s;
+}
+
+#main-menu.is-expanded>#mm--main {
+  padding-top: 20px;
+}
+
+#main-menu>#mm--main>#mm--searcher-and-filters,
+#main-menu>#mm--main>#mm--searcher-and-filters>#mm--saf--seacher,
+#main-menu>#mm--main>#mm--searcher-and-filters>#mm--saf--seacher>form,
+#main-menu>#mm--main>#mm--searcher-and-filters>#mm--saf--seacher>form>label {
+  width: 100%;
+}
+
+#main-menu>#mm--main>#mm--searcher-and-filters {
+  max-height: 0;
+  padding-right: 0;
+  margin-bottom: 0;
+  transition: margin 0.4s, padding 0.4s, max-height 0.4s;
+  transition-delay: 0.4s;
+}
+
+#main-menu.is-expanded>#mm--main>#mm--searcher-and-filters {
+  max-height: 100px;
+  padding-right: 10px;
+  margin-bottom: 15px;
+  transition-delay: 0s;
+}
+
+#main-menu>#mm--main>#mm--searcher-and-filters>#mm--saf--seacher {
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: opacity 0.4s, transform 0.4s;
+  transition-delay: 0s;
+}
+
+#main-menu.is-expanded>#mm--main>#mm--searcher-and-filters>#mm--saf--seacher {
+  opacity: 1;
+  transform: translateY(0%);
+  transition-delay: 0.4s;
+}
+
+#main-menu>#mm--main>#mm--accounts,
+#main-menu>#mm--main>#mm--accounts>.accounts--list,
+#main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups,
+#main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group,
+#main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>div,
+#main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list,
+#main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item,
+#main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>a {
+  width: 100%;
+}
+
+#main-menu>#mm--main>#mm--accounts {
+  padding-right: 10px;
+  padding-bottom: 100px;
+}
+
+#main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group {
+  margin-bottom: 0;
+  transition: margin-bottom 0.4s;
+  transition-delay: 0.4s;
+}
+
+#main-menu.is-expanded>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group {
+  margin-bottom: 15px;
+}
+
+#main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--head {
+  max-height: 0;
+  padding: 0;
+  overflow: hidden;
+  transition: max-height 0.4s, padding 0.4s;
+  transition-delay: 0.4s;
+  cursor: pointer;
+}
+
+#main-menu.is-expanded>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--head {
+  max-height: 100px;
+  padding: 10px 0;
+}
+
+#main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--head>h4 {
+  width: auto;
+  max-width: 100%;
+  color: #5a77fe;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  opacity: 0;
+  display: inline-block;
+  transition: opacity 0.4s;
+}
+
+#main-menu.is-expanded>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--head>h4 {
+  opacity: 1;
+  transition-delay: 0.6s;
+}
+
+#main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item {
+  cursor: pointer;
+}
+
+#main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>a {
+  cursor: pointer;
+}
+
+#main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>a>.account--box {
+  width: 100%;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>a>.account--box>.account--image {
+  width: 48px;
+  margin-right: 15px;
+}
+
+#main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>a>.account--box>.account--image>.account--avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 100%;
+  background-color: white;
+  overflow: hidden;
+}
+
+/* #main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>a>.account--box>.account--image>.accounte--avatar::before {
+  content: '';
+  width: 100%;
+  padding-top: 100%;
+  display: block;
+} */
+
+/* #main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>a>.account--box>.account--image>.accounte--avatar>div {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #f0f0f0;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  position: absolute;
+} */
+
+#main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>a>.account--box>.account--details {
+  width: calc(100% - 86px);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+#main-menu.is-expanded>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>a>.account--box>.account--details {
+  opacity: 1;
+  transition-delay: 0.4s;
+}
+
+#main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>a>.account--box>.account--details>div,
+#main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>a>.account--box>.account--details>.account--details--user>h5,
+#main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>a>.account--box>.account--details>.account--details--username>p {
+  width: 100%;
+  white-space: nowrap;
+}
+
+#main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>a>.account--box>.account--details>.account--details--user>h5 {
+  font-weight: 400;
+}
+
+#main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>a>.account--box>.account--details>.account--details--username>p {
+  color: #999;
+  font-size: 16px;
+}
+
+#main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>a>.account--box>.account--actions {
+  width: 24px;
+  text-align: center;
+  transform: translateX(100%);
+  transition: transform 0.4s, opacity 0.4s;
+  opacity: 0;
+}
+
+#main-menu.is-expanded>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>a>.account--box>.account--actions {
+  transform: translateX(0%);
+  transition-delay: 0.8s;
+  opacity: 1;
+}
+
+#main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>a>.account--box>.account--actions>i {
+  opacity: 0.3;
+  cursor: pointer;
+}
+
+#main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>a>.account--box>.account--actions>i:hover {
+  opacity: 0.7;
+}
+
+#main-menu>#mm--footer {
+  width: calc(100% - 5px);
+  left: 0;
+  bottom: 0;
+  padding: 20px;
+  background-image: linear-gradient(0deg, white, white, rgba(255, 255, 255, 0));
+  transition: transform 0.4s, opacity 0.4s;
+  transition-delay: 0s;
+  transform: translateY(100%);
+  position: absolute;
+  opacity: 0;
+}
+
+#main-menu.is-expanded>#mm--footer {
+  opacity: 1;
+  transform: translateY(0%);
+  transition-delay: 0.6s;
+}
+
+#main-menu>#mm--footer>#btn-add-account {
+  height: auto;
+  padding: 15px;
+  margin-top: 10px;
+  background-image: linear-gradient(45deg, #5a77fe, #25e4af);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#main-menu>#mm--footer>#btn-add-account>.btn-icon {
+  width: 32px;
+  margin-right: 15px;
+}
+
+#main-menu>#mm--footer>#btn-add-account>.btn-icon>i {
+  padding: 6px;
+  border-radius: 100%;
+  font-size: 24px;
+  color: white;
+  background-color: rgba(255, 255, 255, .2);
+}
+
+#main-menu>#mm--footer>#btn-add-account>.btn-text {
+  width: calc(100% - 47px);
+}
+
+#main-menu>#mm--footer>#btn-add-account>.btn-text>span {
+  width: 100%;
+  color: white;
+  text-align: left;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.06);
+  display: block;
+}
+
+#main-menu>#mm--footer>#btn-add-account>.btn-text>.btn-title {
+  font-weight: 500;
+}
+
+#main-menu>#mm--footer>#btn-add-account>.btn-text>.btn-info {
+  font-size: 14px;
+  opacity: 0.7;
+}

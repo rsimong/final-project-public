@@ -1,0 +1,304 @@
+<div class="modal-shadow" (click)="closeSettingsModal()"></div>
+<div id="modal-connect-account" class="modal">
+  <div class="m--header">
+  </div>
+  <div class="m--content">
+    <div class="m--content-left">
+      <div class="sections">
+        <ng-container *ngFor="let group of settingsMenu">
+          <div class="sections--group">
+            <div class="sections--group--title">
+              <h4>{{ group.name }}</h4>
+            </div>
+            <div class="sections--group--list">
+              <ul>
+                <ng-container *ngFor="let option of group.options">
+                  <li class="sections--item" [ngClass]="{'active': selectedMenuItem === option.template}"
+                    (click)="changeMenuItem(option.template)">
+                    <span>{{ option.name }}</span>
+                  </li>
+                </ng-container>
+              </ul>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    <div class="m--content-right">
+      <ng-container
+        *ngIf="selectedMenuItem === 0 || selectedMenuItem === 1 || selectedMenuItem === 2 || selectedMenuItem === 3">
+        <div id="ap-general-settings" class="settings-box">
+          <div class="sb--header">
+            <div class="sb--header--left">
+              <div class="sb--header--seacher">
+                <app-searcher></app-searcher>
+              </div>
+            </div>
+          </div>
+          <div class="sb--body">
+            <div class="sb--title">
+              <h1>General Settings</h1>
+            </div>
+            <div class="sb--content">
+              <div class="settings--group">
+                <div class="sg--head">
+                  <h3>
+                    <span>Language</span>
+                  </h3>
+                </div>
+                <div class="sg--content">
+                  <form [formGroup]="profileForm">
+                    <ng-container formGroupName="settings">
+                      <label>
+                        <span>Aplication Language</span>
+                        <select name="language" formControlName="language">
+                          <option value="en">English (EN)</option>
+                          <option value="es">Español (ES)</option>
+                        </select>
+                      </label>
+                    </ng-container>
+                  </form>
+                </div>
+              </div>
+              <!-- <div class="settings--group">
+                <div class="sg--content">
+                  <form [formGroup]="profileForm">
+                    <label>
+                      <span>Themes</span>
+                      <select name="language" formControlName="language">
+                        <option value="en">English (EN)</option>
+                      </select>
+                    </label>
+                  </form>
+                </div>
+              </div> -->
+              <div class="settings--group">
+                <div class="sg--head">
+                  <h3>
+                    <span>Accessibility</span>
+                  </h3>
+                </div>
+                <div class="sg--content">
+                  <form [formGroup]="profileForm">
+                    <ng-container formGroupName="settings">
+                      <ng-container formGroupName="accessibility">
+                        <label>
+                          <span>Font</span>
+                          <select name="font" formControlName="fontFamily">
+                            <option value="roboto">Roboto</option>
+                          </select>
+                        </label>
+                        <label>
+                          <span>Font Size</span>
+                          <select name="font-size" formControlName="fontSize">
+                            <option value="1">x1.0</option>
+                            <option value="15">x1.5</option>
+                            <option value="2">x2.0</option>
+                            <option value="25">x2.5</option>
+                          </select>
+                        </label>
+                        <label>
+                          <span>High Contrast</span>
+                          <input type="checkbox" name="highContrast" formControlName="highContrast">
+                          <div class="input-switch">
+                            <div>
+                              <i class="material-icons">
+                                check
+                              </i>
+                            </div>
+                          </div>
+                        </label>
+                      </ng-container>
+                    </ng-container>
+                  </form>
+                </div>
+              </div>
+              <div class="settings--group">
+                <div class="sg--head">
+                  <h3>
+                    <span>Change Password</span>
+                  </h3>
+                </div>
+                <div class="sg--content">
+                  <form [formGroup]="changePassForm">
+                    <label>
+                      <span>Old Password</span>
+                      <input type="password" name="old-pwd" formControlName="oldPwd">
+                    </label>
+                    <label>
+                      <span>New Password</span>
+                      <input type="password" name="new-pwd" formControlName="newPwd">
+                    </label>
+                    <label>
+                      <span>Confirm New Password</span>
+                      <input type="password" name="confirm-new-pwd" formControlName="confirmNewPwd">
+                    </label>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="selectedMenuItem === 4">
+        <div id="ap-profile" [ngClass]="{'is-edited': userProfileEdited}">
+          <div class="ap-profile--desktop-box">
+            <div class="left-box">
+              <div class="zone-pointer">
+                <div class="zp-title"><span>Avatar</span></div>
+                <div class="zp-form">
+                  <form [formGroup]="profileForm">
+                    <label>
+                      <input type="file" name="avatar" formControlName="avatar" />
+                      <div class="dad-zone">
+                        <div class="msg-dad">
+                          <div class="msg-dad--icon">
+                            <i class="material-icons">
+                              arrow_upward
+                            </i>
+                          </div>
+                          <div class="msg-dad--text">
+                            <p><span>Drop your files</span>to upload</p>
+                          </div>
+                        </div>
+                      </div>
+                    </label>
+                  </form>
+                </div>
+              </div>
+              <div class="zone-pointer">
+                <div class="zp-title"><span>Email</span></div>
+                <div class="zp-form">
+                  <form [formGroup]="profileForm">
+                    <label>
+                      <input type="mail" name="email" placeholder="Email" formControlName="email" />
+                    </label>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="preview-profile-card">
+              <div class="ppc--avatar" [style.background-image]="'url(' + user.avatar + ')' | safe: 'style'"></div>
+              <div class="ppc--details">
+                <div class="ppc--details--box">
+                  <h5>{{ profileForm.value.name || user.name }} {{ profileForm.value.surname || user.surname }}</h5>
+                  <p>{{ profileForm.value.email || user.email }}</p>
+                </div>
+              </div>
+            </div>
+            <div class="right-box">
+              <div class="zone-pointer">
+                <div class="zp-title"><span>Name and Surnames</span></div>
+                <div class="zp-form">
+                  <form [formGroup]="profileForm">
+                    <label>
+                      <input type="text" name="name" placeholder="Name" formControlName="name" />
+                    </label>
+                    <label>
+                      <input type="text" name="surname" placeholder="Surnames" formControlName="surname" />
+                    </label>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ap-profile--confirm-msg">
+            <p>Changes have been detected. Do you want to save them?</p>
+          </div>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="selectedMenuItem === 5">
+        <div id="ap-account-management" class="settings-box">
+          <div class="am--header sb--header">
+            <div class="am--header--left sb--header--left">
+              <div class="am--header--seacher sb--header--seacher">
+                <app-searcher></app-searcher>
+              </div>
+            </div>
+          </div>
+          <div class="am--body sb--body">
+            <div class="am--title sb--title">
+              <h1>Account Management</h1>
+            </div>
+            <div class="am--content sb--content">
+              <div class="am--accounts-list">
+                <div class="al--head">
+                  <ul>
+                    <li class="h--type-cell">
+                      <span>Type</span>
+                    </li>
+                    <li class="h--avatar-cell">
+                      <span>Avatar</span>
+                    </li>
+                    <li class="h--name-cell">
+                      <span>Username</span>
+                    </li>
+                    <li class="h--status-cell">
+                      <span>Status</span>
+                    </li>
+                    <li class="h--password-cell">
+                      <span>Password</span>
+                    </li>
+                    <li class="h--actions-cell">
+                      <span>Actions</span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="al--body">
+                  <ul>
+                    <ng-container *ngFor="let account of user.accounts">
+                      <li class="al--item">
+                        <div class="account">
+                          <div class="a--type-cell">
+                            <i class="{{ getIconByType(account.type) }}"></i>
+                          </div>
+                          <div class="a--avatar-cell">
+                            <div class="avatar">
+                              <div [style.background-image]="'url(' + account.avatar + ')' | safe: 'style'"></div>
+                            </div>
+                          </div>
+                          <div class="a--name-cell">
+                            <span>{{ account.username }}</span>
+                          </div>
+                          <div class="a--status-cell">
+                            <div class="status">
+                              <span>Active</span>
+                            </div>
+                          </div>
+                          <div class="a--password-cell">
+                            <div class="password-strenght">
+                              <div class="password-strenght-bar">
+                                <div></div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="a--actions-cell">
+                            <ul>
+                              <li>
+                                <i class="material-icons">
+                                  pause
+                                </i>
+                              </li>
+                              <li>
+                                <i class="far fa-eye"></i>
+                              </li>
+                              <li>
+                                <i class="material-icons">
+                                  delete_outline
+                                </i>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </li>
+                    </ng-container>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

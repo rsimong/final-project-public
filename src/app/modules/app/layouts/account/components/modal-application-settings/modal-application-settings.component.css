@@ -1,0 +1,833 @@
+:host {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  z-index: 9;
+}
+
+.modal-shadow {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: background-color 0.4s;
+  position: fixed;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.modal-shadow:hover {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal {
+  width: 100%;
+  max-width: 1150px;
+  height: 100%;
+  max-height: 700px;
+  top: 50%;
+  left: 50%;
+  border-radius: 4px;
+  box-shadow: 0 5px 10px #b2b2b2;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  transition: box-shadow 0.4s;
+  position: absolute;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.modal-shadow:hover+.modal {
+  box-shadow: 0 5px 10px #747474;
+}
+
+.modal>.m--header,
+.modal>.m--content {
+  width: 100%;
+}
+
+.modal>.m--content {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.modal>.m--content>div {
+  height: 100%;
+  padding: 40px;
+}
+
+.modal>.m--content>.m--content-left {
+  width: 260px;
+  border-right: 1px solid #efefef;
+}
+
+.modal>.m--content>.m--content-right {
+  width: calc(100% - 260px);
+  padding: 0;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.modal>.m--content>.m--content-left>.sections,
+.modal>.m--content>.m--content-left>.sections>.sections--group,
+.modal>.m--content>.m--content-left>.sections>.sections--group>div,
+.modal>.m--content>.m--content-left>.sections>.sections--group>.sections--group--title>h4,
+.modal>.m--content>.m--content-left>.sections>.sections--group>.sections--group--list>ul,
+.modal>.m--content>.m--content-left>.sections>.sections--group>.sections--group--list>ul>.sections--item {
+  width: 100%;
+}
+
+.modal>.m--content>.m--content-left>.sections>.sections--group:not(:last-of-type) {
+  margin-bottom: 40px;
+}
+
+.modal>.m--content>.m--content-left>.sections>.sections--group>.sections--group--title {
+  margin-bottom: 5px;
+}
+
+.modal>.m--content>.m--content-left>.sections>.sections--group>.sections--group--title>h4 {
+  font-size: 14px;
+  font-weight: 500;
+  color: #9ba0a7;
+  text-transform: uppercase;
+}
+
+.modal>.m--content>.m--content-left>.sections>.sections--group>.sections--group--list>ul>.sections--item {
+  padding: 6px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  cursor: pointer;
+}
+
+.modal>.m--content>.m--content-left>.sections>.sections--group>.sections--group--list>ul>.sections--item.active {
+  font-weight: 500;
+  color: #5a77fe;
+  opacity: 1;
+}
+
+.modal>.m--content>.m--content-left>.sections>.sections--group>.sections--group--list>ul>.sections--item.active>span {
+  font: inherit;
+  color: inherit;
+}
+
+.modal>.m--content>.m--content-left>.sections>.sections--group>.sections--group--list>ul>.sections--item.not-available>span:first-of-type {
+  opacity: 0.4;
+}
+
+.modal>.m--content>.m--content-left>.sections>.sections--group>.sections--group--list>ul>.sections--item>.msg-info {
+  font: inherit;
+  font-size: 14px;
+  color: #5a77fe;
+}
+
+/* Settings :: Basics Styles */
+.modal>.m--content>.m--content-right>.settings-box>.sb--header,
+.modal>.m--content>.m--content-right>.settings-box>.sb--header>div {
+  width: 100%;
+}
+
+.modal>.m--content>.m--content-right>.settings-box>.sb--header {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.modal>.m--content>.m--content-right>.settings-box>.sb--header>.sb--header--left>.sb--header--seacher {
+  width: 100%;
+  max-width: 300px;
+}
+
+.modal>.m--content>.m--content-right>.settings-box>.sb--body,
+.modal>.m--content>.m--content-right>.settings-box>.sb--body>.sb--title,
+.modal>.m--content>.m--content-right>.settings-box>.sb--body>.sb--title>h1,
+.modal>.m--content>.m--content-right>.settings-box>.sb--body>.sb--content {
+  width: 100%;
+}
+
+.modal>.m--content>.m--content-right>.settings-box>.sb--body {
+  padding: 40px 0;
+}
+
+.modal>.m--content>.m--content-right>.settings-box>.sb--body>.sb--title>h1 {
+  font-size: 36px;
+  font-weight: 300;
+}
+
+
+/* Settings :: General Settings */
+#ap-general-settings {
+  width: 100%;
+  padding: 40px;
+}
+
+#ap-general-settings>.sb--body>.sb--content>.settings--group,
+#ap-general-settings>.sb--body>.sb--content>.settings--group>.sg--head,
+#ap-general-settings>.sb--body>.sb--content>.settings--group>.sg--head>h3,
+#ap-general-settings>.sb--body>.sb--content>.settings--group>.sg--content,
+#ap-general-settings>.sb--body>.sb--content>.settings--group>.sg--content>form,
+#ap-general-settings>.sb--body>.sb--content>.settings--group>.sg--content>form>label,
+#ap-general-settings>.sb--body>.sb--content>.settings--group>.sg--content>form>label>* {
+  width: 100%;
+}
+
+#ap-general-settings>.sb--body>.sb--content>.settings--group {
+  padding: 40px 0;
+}
+
+#ap-general-settings>.sb--body>.sb--content>.settings--group:not(:last-of-type) {
+  border-bottom: 1px solid #efefef;
+}
+
+#ap-general-settings>.sb--body>.sb--content>.settings--group>.sg--head {
+  margin-bottom: 35px;
+}
+
+#ap-general-settings>.sb--body>.sb--content>.settings--group>.sg--head>h3 {
+  font-size: 16px;
+  font-weight: 500;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#ap-general-settings>.sb--body>.sb--content>.settings--group>.sg--head>h3>i,
+#ap-general-settings>.sb--body>.sb--content>.settings--group>.sg--head>h3>span {
+  font-size: inherit;
+  color: inherit;
+}
+
+#ap-general-settings>.sb--body>.sb--content>.settings--group>.sg--head>h3>span {
+  font: inherit;
+  text-transform: uppercase;
+}
+
+#ap-general-settings>.sb--body>.sb--content>.settings--group>.sg--content>form {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#ap-general-settings>.sb--body>.sb--content>.settings--group>.sg--content>form>label {
+  width: calc((100% - 80px) / 3);
+  display: inline-block;
+}
+
+#ap-general-settings>.sb--body>.sb--content>.settings--group>.sg--content>form>label:not(:nth-child(3n)) {
+  margin-right: 40px;
+}
+
+#ap-general-settings>.sb--body>.sb--content>.settings--group>.sg--content>form>label>span {
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+#ap-general-settings>.sb--body>.sb--content>.settings--group>.sg--content>form>label>select,
+#ap-general-settings>.sb--body>.sb--content>.settings--group>.sg--content>form>label>input[type="text"],
+#ap-general-settings>.sb--body>.sb--content>.settings--group>.sg--content>form>label>input[type="password"] {
+  height: 40px;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  transition: background-color 0.4s;
+  background-color: #f4f4f4;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+#ap-general-settings>.sb--body>.sb--content>.settings--group>.sg--content>form>label>input[type="checkbox"] {
+  display: none;
+}
+
+#ap-general-settings>.sb--body>.sb--content>.settings--group>.sg--content>form>label>input[type=checkbox]+.input-switch {
+  width: 76px !important;
+  height: 40px;
+  padding: 4px;
+  border-radius: 8px;
+  background-color: #f4f4f4;
+  cursor: pointer;
+  display: block;
+}
+
+#ap-general-settings>.sb--body>.sb--content>.settings--group>.sg--content>form>label>input[type=checkbox]+.input-switch>div {
+  width: 32px;
+  height: 32px;
+  top: 50%;
+  left: 4px;
+  margin: 0;
+  border-radius: 4px;
+  transition: 0.1s;
+  transform: translate(0%, -50%);
+  background-color: #ccc;
+  display: inline-block;
+  position: absolute;
+  overflow: hidden;
+}
+
+#ap-general-settings>.sb--body>.sb--content>.settings--group>.sg--content>form>label>input[type=checkbox]+.input-switch>div>i {
+  top: 50%;
+  left: 50%;
+  color: white;
+  transform: translate(-50%, -50%) scale(0.8);
+  transition: 0.2s;
+  user-select: none;
+  opacity: 0;
+  position: absolute;
+}
+
+#ap-general-settings>.sb--body>.sb--content>.settings--group>.sg--content>form>label>input[type=checkbox]:checked+.input-switch>div {
+  left: calc(100% - 4px);
+  transform: translate(-100%, -50%);
+  background-color: #25e4af;
+}
+
+#ap-general-settings>.sb--body>.sb--content>.settings--group>.sg--content>form>label>input[type=checkbox]:checked+.input-switch>div>i {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+
+/* Settings :: Profile */
+#ap-profile {
+  width: 100%;
+  height: 100%;
+  background-color: #f3f3f3;
+  overflow: hidden;
+}
+
+#ap-profile>.ap-profile--desktop-box {
+  width: 100%;
+  top: calc(50% - 50px);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  position: absolute;
+}
+
+#ap-profile>.ap-profile--desktop-box>div {
+  width: calc((100% - 245px) / 2);
+  z-index: 2;
+}
+
+#ap-profile>.ap-profile--desktop-box>.left-box>.zone-pointer,
+#ap-profile>.ap-profile--desktop-box>.right-box>.zone-pointer {
+  width: 85%;
+  top: 0;
+  right: 0;
+  position: absolute;
+}
+
+#ap-profile>.ap-profile--desktop-box>.right-box>.zone-pointer {
+  left: 0;
+}
+
+#ap-profile>.ap-profile--desktop-box>.left-box>.zone-pointer:nth-child(1) {
+  top: 20px;
+}
+
+#ap-profile>.ap-profile--desktop-box>.left-box>.zone-pointer:nth-child(2) {
+  top: calc(100% - 40px);
+}
+
+#ap-profile>.ap-profile--desktop-box>.right-box>.zone-pointer:nth-child(1) {
+  top: calc(100% - 60px);
+}
+
+#ap-profile>.ap-profile--desktop-box>.left-box>.zone-pointer>.zp-title,
+#ap-profile>.ap-profile--desktop-box>.right-box>.zone-pointer>.zp-title {
+  width: 100%;
+  font-weight: 500;
+  color: #5a77fe;
+  z-index: 1;
+}
+
+#ap-profile>.ap-profile--desktop-box>.right-box>.zone-pointer>.zp-title {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#ap-profile>.ap-profile--desktop-box>.left-box>.zone-pointer>.zp-title>span,
+#ap-profile>.ap-profile--desktop-box>.right-box>.zone-pointer>.zp-title>span {
+  width: auto;
+  padding: 0 10px;
+  color: #5a77fe;
+  background-color: #f3f3f3;
+  cursor: pointer;
+  z-index: 3;
+}
+
+#ap-profile>.ap-profile--desktop-box>.left-box>.zone-pointer>.zp-title::before,
+#ap-profile>.ap-profile--desktop-box>.right-box>.zone-pointer>.zp-title::before {
+  content: '';
+  width: calc(100% + 20px);
+  height: 2px;
+  top: 50%;
+  transform: translate(0%, -50%);
+  background-color: #5a77fe;
+  position: absolute;
+  z-index: 2;
+}
+
+#ap-profile>.ap-profile--desktop-box>.right-box>.zone-pointer>.zp-title::before {
+  right: 0;
+}
+
+#ap-profile>.ap-profile--desktop-box>.left-box>.zone-pointer:nth-child(2)>.zp-title::before {
+  width: calc(100% + 10px);
+}
+
+#ap-profile>.ap-profile--desktop-box>.right-box>.zone-pointer:nth-child(1)>.zp-title::before {
+  width: calc(100% + 10px);
+}
+
+#ap-profile>.ap-profile--desktop-box>.left-box>.zone-pointer>.zp-title::after,
+#ap-profile>.ap-profile--desktop-box>.right-box>.zone-pointer>.zp-title::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  top: 50%;
+  right: -30px;
+  border-radius: 100%;
+  transform: translate(-50%, -50%);
+  background-color: #5a77fe;
+  position: absolute;
+  z-index: 1;
+}
+
+#ap-profile>.ap-profile--desktop-box>.right-box>.zone-pointer>.zp-title::after {
+  left: -22px;
+  right: unset;
+}
+
+#ap-profile>.ap-profile--desktop-box>.left-box>.zone-pointer:nth-child(2)>.zp-title::after {
+  right: -22px;
+}
+
+#ap-profile>.ap-profile--desktop-box>.right-box>.zone-pointer:nth-child(1)>.zp-title::after {
+  left: -14px;
+}
+
+#ap-profile>.ap-profile--desktop-box>div>.zone-pointer>.zp-form {
+  width: calc(100% - 20px);
+  max-height: 0;
+  padding: 0 15px;
+  margin-top: 10px;
+  margin-left: 10px;
+  border-radius: 4px;
+  box-shadow: 0 6px 15px -2px #d7d7d7;
+  transition: 0.4s;
+  background-color: white;
+  overflow: hidden;
+  opacity: 0;
+  z-index: 2;
+}
+
+/* #ap-profile>.ap-profile--desktop-box>div>.zone-pointer:hover>.zp-form { */
+#ap-profile>.ap-profile--desktop-box>div>.zone-pointer>.zp-form {
+  max-height: 800px;
+  padding: 15px;
+  opacity: 1;
+}
+
+#ap-profile>.ap-profile--desktop-box>div>.zone-pointer.zone-pointer--invert>.zp-form {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+#ap-profile>.ap-profile--desktop-box>div>.zone-pointer>.zp-form>form,
+#ap-profile>.ap-profile--desktop-box>div>.zone-pointer>.zp-form>form>label,
+#ap-profile>.ap-profile--desktop-box>div>.zone-pointer>.zp-form>form>label>span {
+  width: 100%;
+  display: block;
+}
+
+#ap-profile>.ap-profile--desktop-box>div>.zone-pointer>.zp-form>form>label {
+  transition: opacity 0.4s 0s;
+  opacity: 0;
+}
+
+/* #ap-profile>.ap-profile--desktop-box>div>.zone-pointer:hover>.zp-form>form>label { */
+#ap-profile>.ap-profile--desktop-box>div>.zone-pointer>.zp-form>form>label {
+  transition: opacity 0.4s 0.1s;
+  opacity: 1;
+}
+
+#ap-profile>.ap-profile--desktop-box>div>.zone-pointer>.zp-form>form>label:not(:last-of-type) {
+  margin-bottom: 10px;
+}
+
+#ap-profile>.ap-profile--desktop-box>div>.zone-pointer>.zp-form>form>label>span {
+  width: 100%;
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: 500;
+  display: block;
+}
+
+#ap-profile>.ap-profile--desktop-box>div>.zone-pointer>.zp-form>form>label>input,
+#ap-profile>.ap-profile--desktop-box>div>.zone-pointer>.zp-form>form>label>input[type="file"]+div.dad-zone {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #f4f4f4;
+}
+
+#ap-profile>.ap-profile--desktop-box>div>.zone-pointer>.zp-form>form>label>input[type="file"] {
+  display: none;
+}
+
+#ap-profile>.ap-profile--desktop-box>div>.zone-pointer>.zp-form>form>label>input[type="file"]+div.dad-zone {
+  cursor: pointer;
+}
+
+#ap-profile>.ap-profile--desktop-box>div>.zone-pointer>.zp-form>form>label>input[type=file]+.dad-zone>.msg-dad {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#ap-profile>.ap-profile--desktop-box>div>.zone-pointer>.zp-form>form>label>input[type=file]+.dad-zone>.msg-dad>.msg-dad--icon {
+  width: 46px;
+  height: 46px;
+  margin-right: 10px;
+  border-radius: 100%;
+  background-color: #5a77fe;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#ap-profile>.ap-profile--desktop-box>div>.zone-pointer>.zp-form>form>label>input[type=file]+.dad-zone>.msg-dad>.msg-dad--icon>i {
+  color: white;
+}
+
+#ap-profile>.ap-profile--desktop-box>div>.zone-pointer>.zp-form>form>label>input[type=file]+.dad-zone>.msg-dad>.msg-dad--text {
+  width: calc(100% - 56px);
+}
+
+#ap-profile>.ap-profile--desktop-box>div>.zone-pointer>.zp-form>form>label>input[type=file]+.dad-zone>.msg-dad>.msg-dad--text>p {
+  color: #a0a0a0;
+}
+
+#ap-profile>.ap-profile--desktop-box>div>.zone-pointer>.zp-form>form>label>input[type=file]+.dad-zone>.msg-dad>.msg-dad--text>p>span {
+  font: inherit;
+  color: #373d52;
+  display: block;
+}
+
+#ap-profile>.ap-profile--desktop-box>.preview-profile-card {
+  width: 245px;
+  height: 345px;
+  border-radius: 8px;
+  box-shadow: 0 30px 20px -20px #c0c0c0;
+  overflow: hidden;
+  z-index: 1;
+}
+
+#ap-profile>.ap-profile--desktop-box>.preview-profile-card>.ppc--avatar {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: 1;
+}
+
+#ap-profile>.ap-profile--desktop-box>.preview-profile-card>.ppc--details {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(180deg, transparent, transparent, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.85));
+  position: absolute;
+  z-index: 2;
+}
+
+#ap-profile>.ap-profile--desktop-box>.preview-profile-card>.ppc--details>.ppc--details--box {
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  padding: 20px;
+  position: absolute;
+}
+
+#ap-profile>.ap-profile--desktop-box>.preview-profile-card>.ppc--details>.ppc--details--box>h5,
+#ap-profile>.ap-profile--desktop-box>.preview-profile-card>.ppc--details>.ppc--details--box>p {
+  width: 100%;
+  color: white;
+}
+
+#ap-profile>.ap-profile--desktop-box>.preview-profile-card>.ppc--details>.ppc--details--box>h5 {
+  font-size: 20px;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+#ap-profile>.ap-profile--desktop-box>.preview-profile-card>.ppc--details>.ppc--details--box>p {
+  font-size: 16px;
+  font-weight: 400;
+  opacity: 0.65;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+#ap-profile>.ap-profile--confirm-msg {
+  width: 60%;
+  left: 50%;
+  bottom: 0;
+  padding: 20px;
+  margin-bottom: 0px;
+  border-radius: 6px;
+  transform: translate(-50%, 100%);
+  transition: 0.4s;
+  box-shadow: 0 6px 15px -2px #d7d7d7;
+  background-color: white;
+  opacity: 0;
+  position: absolute;
+}
+
+#ap-profile.is-edited>.ap-profile--confirm-msg {
+  margin-bottom: 20px;
+  transform: translate(-50%, 0%);
+  opacity: 1;
+}
+
+
+/* Setting :: Account Management */
+#ap-account-management {
+  width: 100%;
+  height: 100%;
+  padding: 40px;
+}
+
+#ap-account-management>.am--body>.am--content>.am--accounts-list,
+#ap-account-management>.am--body>.am--content>.am--accounts-list>.al--head,
+#ap-account-management>.am--body>.am--content>.am--accounts-list>.al--body,
+#ap-account-management>.am--body>.am--content>.am--accounts-list>.al--body>ul,
+#ap-account-management>.am--body>.am--content>.am--accounts-list>.al--body>ul>.al--item {
+  width: 100%;
+}
+
+#ap-account-management>.am--body>.am--content>.am--accounts-list {
+  min-width: 520px;
+  margin-top: 40px;
+}
+
+#ap-account-management>.am--body>.am--content>.am--accounts-list>.al--head {
+  /* margin-bottom: 20px; */
+}
+
+#ap-account-management>.am--body>.am--content>.am--accounts-list>.al--head>ul {
+  padding-left: 5px;
+  /* border-bottom: 1px solid #ededed; */
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#ap-account-management>.am--body>.am--content>.am--accounts-list>.al--head>ul>li {
+  padding: 6px 5px;
+  color: #9ba0a7;
+  overflow: hidden;
+}
+
+#ap-account-management>.am--body>.am--content>.am--accounts-list>.al--head>ul>li>span {
+  width: 100%;
+  font-size: 15px;
+  color: inherit;
+  text-align: left;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: inline-block;
+  overflow: hidden;
+}
+
+#ap-account-management>.am--body>.am--content>.am--accounts-list>.al--head>ul>.h--type-cell {
+  width: 55px;
+}
+
+#ap-account-management>.am--body>.am--content>.am--accounts-list>.al--head>ul>.h--avatar-cell {
+  width: 80px;
+}
+
+#ap-account-management>.am--body>.am--content>.am--accounts-list>.al--head>ul>.h--avatar-cell>span {
+  text-align: center;
+}
+
+#ap-account-management>.am--body>.am--content>.am--accounts-list>.al--head>ul>.h--name-cell {
+  width: calc(100% - (55px + 80px + 180px + 190px));
+  overflow: hidden;
+}
+
+#ap-account-management>.am--body>.am--content>.am--accounts-list>.al--head>ul>.h--actions-cell {
+  width: 140px;
+}
+
+#ap-account-management>.am--body>.am--content>.am--accounts-list>.al--body>ul>.al--item {
+  padding: 14px 20px;
+  margin-bottom: 10px;
+  border: 1px solid #e6e6e6;
+  border-radius: 4px;
+  /* box-shadow: 0 4px 10px #e6e6e6; */
+}
+
+#ap-account-management>.am--body>.am--content>.am--accounts-list>.al--body>ul>.al--item>.account {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#ap-account-management>.am--body>.am--content>.am--accounts-list>.al--body>ul>.al--item>.account>div {
+  padding: 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#ap-account-management>.am--body>.am--content>.am--accounts-list>.al--body>ul>.al--item>.account>.a--type-cell {
+  width: 35px;
+  padding: 0;
+  padding-right: 15px;
+}
+
+#ap-account-management>.am--body>.am--content>.am--accounts-list>.al--body>ul>.al--item>.account>.a--type-cell>i {
+  width: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#ap-account-management>.am--body>.am--content>.am--accounts-list>.al--body>ul>.al--item>.account>.a--avatar-cell {
+  width: 64px;
+}
+
+#ap-account-management>.am--body>.am--content>.am--accounts-list>.al--body>ul>.al--item>.account>.a--avatar-cell>.avatar {
+  width: 38px;
+  min-width: 38px;
+  height: 38px;
+  min-height: 38px;
+  border-radius: 100%;
+  background-color: #dfdfdf;
+  overflow: hidden;
+}
+
+#ap-account-management>.am--body>.am--content>.am--accounts-list>.al--body>ul>.al--item>.account>.a--avatar-cell>.avatar>div {
+  width: 100%;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  position: absolute;
+}
+
+#ap-account-management>.am--body>.am--content>.am--accounts-list>.al--body>ul>.al--item>.account>.a--name-cell {
+  width: calc(100% - (35px + 64px + 180px + 190px));
+  overflow: hidden;
+}
+
+#ap-account-management>.am--body>.am--content>.am--accounts-list>.al--body>ul>.al--item>.account>.a--name-cell>span {
+  width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+#ap-account-management>.am--body>.am--content>.am--accounts-list>.al--head>ul>.h--password-cell,
+#ap-account-management>.am--body>.am--content>.am--accounts-list>.al--body>ul>.al--item>.account>.a--password-cell {
+  width: 190px;
+}
+
+#ap-account-management>.am--body>.am--content>.am--accounts-list>.al--body>ul>.al--item>.account>.a--password-cell>.password-strenght,
+#ap-account-management>.am--body>.am--content>.am--accounts-list>.al--body>ul>.al--item>.account>.a--password-cell>.password-strenght>.password-strenght-bar {
+  width: 100%;
+}
+
+#ap-account-management>.am--body>.am--content>.am--accounts-list>.al--body>ul>.al--item>.account>.a--password-cell>.password-strenght>.password-strenght-bar {
+  width: 100%;
+  height: 7px;
+  border-radius: 8px;
+  background-color: #dfdfdf;
+}
+
+#ap-account-management>.am--body>.am--content>.am--accounts-list>.al--body>ul>.al--item>.account>.a--password-cell>.password-strenght>.password-strenght-bar>div {
+  width: 80%;
+  height: 100%;
+  border-radius: 8px;
+  background-color: rgb(50, 190, 168);
+}
+
+#ap-account-management>.am--body>.am--content>.am--accounts-list>.al--head>ul>.h--status-cell,
+#ap-account-management>.am--body>.am--content>.am--accounts-list>.al--body>ul>.al--item>.account>.a--status-cell {
+  width: 180px;
+  justify-content: flex-start;
+}
+
+#ap-account-management>.am--body>.am--content>.am--accounts-list>.al--body>ul>.al--item>.account>.a--status-cell>.status {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#ap-account-management>.am--body>.am--content>.am--accounts-list>.al--body>ul>.al--item>.account>.a--status-cell>.status::before {
+  content: '';
+  width: 12px;
+  height: 12px;
+  margin-right: 10px;
+  border-radius: 100%;
+  background-color: #dfdfdf;
+  background-color: rgb(50, 190, 168);
+  display: inline-block;
+}
+
+#ap-account-management>.am--body>.am--content>.am--accounts-list>.al--body>ul>.al--item>.account>.a--actions-cell {
+  padding-left: 10px;
+  padding-right: 0;
+}
+
+#ap-account-management>.am--body>.am--content>.am--accounts-list>.al--body>ul>.al--item>.account>.a--actions-cell>ul {
+  white-space: nowrap;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+#ap-account-management>.am--body>.am--content>.am--accounts-list>.al--body>ul>.al--item>.account>.a--actions-cell>ul>li {
+  padding: 0 5px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
