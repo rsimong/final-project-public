@@ -2,6 +2,8 @@
   width: 88px;
   height: 100%;
   padding: 15px;
+  transition: width 0.4s, padding 0.4s;
+  transition-delay: 0.4s, 0s;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -13,30 +15,9 @@
   width: 360px;
   padding: 20px;
   border-right: 1px solid #f8f8f8;
+  transition-delay: 0s;
   /* background-color: white; */
 }
-
-#main-menu>#mm--profile-extended {
-  width: 100%;
-  overflow: hidden;
-  z-index: 1;
-}
-
-#main-menu>#mm--profile-extended>#mm--profile-extended--container {
-  width: 100%;
-  /* background-image: linear-gradient(0deg, rgb(48, 41, 69), transparent); */
-  overflow: hidden;
-  z-index: 3;
-}
-
-
-#main-menu.is-expanded>#mm--profile-extended>#mm--profile-extended--container {
-  padding: 40px 0px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-}
-
 
 #main-menu>#mm--header,
 #main-menu>#mm--header>#mm--logo,
@@ -54,10 +35,31 @@
   position: absolute;
 }
 
+#main-menu>#mm--header>#mm--logo>a {
+  width: 58px;
+  text-align: center;
+  transition: width 0.4s;
+}
+
+#main-menu.is-expanded>#mm--header>#mm--logo>a {
+  width: 32px;
+}
+
 #main-menu>#mm--header>#mm--profile-extended>#mm--profile-extended--container {
+  max-height: 0;
+  padding: 0;
+  border-bottom: 2px solid #f8f8f8;
+  transition: opacity 0.4s, max-height 0.4s, padding 0.4s;
+  transition-delay: 0s;
+  opacity: 0;
+}
+
+#main-menu.is-expanded>#mm--header>#mm--profile-extended>#mm--profile-extended--container {
+  max-height: 500px;
   padding: 20px;
   padding-top: 0;
-  border-bottom: 2px solid #f8f8f8;
+  opacity: 1;
+  transition-delay: 0.4s, 0s, 0.4s;
 }
 
 #main-menu>#mm--header>#mm--profile-extended>#mm--profile-extended--container>.profile {
@@ -74,6 +76,16 @@
   margin-bottom: 15px;
   border-radius: 100%;
   overflow: hidden;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 0.4s, transform 0.4s;
+  transition-delay: 0s;
+}
+
+#main-menu.is-expanded>#mm--header>#mm--profile-extended>#mm--profile-extended--container>.profile>.profile-avatar {
+  opacity: 1;
+  transform: scale(1);
+  transition-delay: 0.4s;
 }
 
 #main-menu>#mm--header>#mm--profile-extended>#mm--profile-extended--container>.profile>.profile-avatar::before {
@@ -114,6 +126,16 @@
 
 #main-menu>#mm--header>#mm--profile-extended>#mm--profile-extended--container>.profile>.profile-details {
   width: 100%;
+  opacity: 0;
+  transform: translateY(25%);
+  transition: opacity 0.4s, transform 0.4s;
+  transition-delay: 0s;
+}
+
+#main-menu.is-expanded>#mm--header>#mm--profile-extended>#mm--profile-extended--container>.profile>.profile-details {
+  opacity: 1;
+  transform: translateY(0%);
+  transition-delay: 0.7s;
 }
 
 #main-menu>#mm--header>#mm--profile-extended>#mm--profile-extended--container>.profile>.profile-details>div {
@@ -123,10 +145,12 @@
 
 #main-menu>#mm--header>#mm--profile-extended>#mm--profile-extended--container>.profile>.profile-details>.profile-details--user>h4 {
   font-weight: 500;
+  white-space: nowrap;
 }
 
 #main-menu>#mm--header>#mm--profile-extended>#mm--profile-extended--container>.profile>.profile-details>.profile-details--username>p {
   color: #aeaeae;
+  white-space: nowrap;
 }
 
 #main-menu>#mm--header>#mm--profile-extended>#mm--profile-extended--container>.profile-actions {
@@ -145,8 +169,14 @@
   margin-left: 30px;
   margin-bottom: -20px;
   padding: 20px 5px;
+  padding-top: 84px;
   overflow: hidden;
   overflow-y: scroll;
+  transition: padding 0.4s;
+}
+
+#main-menu.is-expanded>#mm--main {
+  padding-top: 20px;
 }
 
 #main-menu>#mm--main>#mm--searcher-and-filters,
@@ -157,29 +187,31 @@
 }
 
 #main-menu>#mm--main>#mm--searcher-and-filters {
+  max-height: 0;
+  padding-right: 0;
+  margin-bottom: 0;
+  transition: margin 0.4s, padding 0.4s, max-height 0.4s;
+  transition-delay: 0.4s;
+}
+
+#main-menu.is-expanded>#mm--main>#mm--searcher-and-filters {
+  max-height: 100px;
   padding-right: 10px;
   margin-bottom: 15px;
+  transition-delay: 0s;
 }
 
-#main-menu>#mm--main>#mm--searcher-and-filters>#mm--saf--seacher>form>label {
-  padding: 8px 10px;
-  border-radius: 4px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  background-color: #f4f4f4;
+#main-menu>#mm--main>#mm--searcher-and-filters>#mm--saf--seacher {
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: opacity 0.4s, transform 0.4s;
+  transition-delay: 0s;
 }
 
-#main-menu>#mm--main>#mm--searcher-and-filters>#mm--saf--seacher>form>label>i {
-  margin-right: 6px;
-  opacity: 0.4;
-}
-
-#main-menu>#mm--main>#mm--searcher-and-filters>#mm--saf--seacher>form>label>input {
-  width: 100%;
-  border: none;
-  background-color: transparent;
+#main-menu.is-expanded>#mm--main>#mm--searcher-and-filters>#mm--saf--seacher {
+  opacity: 1;
+  transform: translateY(0%);
+  transition-delay: 0.4s;
 }
 
 #main-menu>#mm--main>#mm--accounts,
@@ -199,19 +231,44 @@
 }
 
 #main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group {
+  margin-bottom: 0;
+  transition: margin-bottom 0.4s;
+  transition-delay: 0.4s;
+}
+
+#main-menu.is-expanded>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group {
   margin-bottom: 15px;
 }
 
 #main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--head {
-  padding: 10px 0;
+  max-height: 0;
+  padding: 0;
+  overflow: hidden;
+  transition: max-height 0.4s, padding 0.4s;
+  transition-delay: 0.4s;
   cursor: pointer;
 }
 
+#main-menu.is-expanded>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--head {
+  max-height: 100px;
+  padding: 10px 0;
+}
+
 #main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--head>h4 {
+  width: auto;
+  max-width: 100%;
   color: #5a77fe;
   font-size: 14px;
   font-weight: 500;
   text-transform: uppercase;
+  opacity: 0;
+  display: inline-block;
+  transition: opacity 0.4s;
+}
+
+#main-menu.is-expanded>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--head>h4 {
+  opacity: 1;
+  transition-delay: 0.6s;
 }
 
 #main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item {
@@ -236,20 +293,22 @@
   margin-right: 15px;
 }
 
-#main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>a>.account--box>.account--image>.accounte--avatar {
+#main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>a>.account--box>.account--image>.account--avatar {
   width: 48px;
+  height: 48px;
   border-radius: 100%;
+  background-color: white;
   overflow: hidden;
 }
 
-#main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>a>.account--box>.account--image>.accounte--avatar::before {
+/* #main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>a>.account--box>.account--image>.accounte--avatar::before {
   content: '';
   width: 100%;
   padding-top: 100%;
   display: block;
-}
+} */
 
-#main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>a>.account--box>.account--image>.accounte--avatar>div {
+/* #main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>a>.account--box>.account--image>.accounte--avatar>div {
   width: 100%;
   height: 100%;
   top: 0;
@@ -259,16 +318,24 @@
   background-position: 50% 50%;
   background-repeat: no-repeat;
   position: absolute;
-}
+} */
 
 #main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>a>.account--box>.account--details {
   width: calc(100% - 86px);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+#main-menu.is-expanded>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>a>.account--box>.account--details {
+  opacity: 1;
+  transition-delay: 0.4s;
 }
 
 #main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>a>.account--box>.account--details>div,
 #main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>a>.account--box>.account--details>.account--details--user>h5,
 #main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>a>.account--box>.account--details>.account--details--username>p {
   width: 100%;
+  white-space: nowrap;
 }
 
 #main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>a>.account--box>.account--details>.account--details--user>h5 {
@@ -283,6 +350,15 @@
 #main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>a>.account--box>.account--actions {
   width: 24px;
   text-align: center;
+  transform: translateX(100%);
+  transition: transform 0.4s, opacity 0.4s;
+  opacity: 0;
+}
+
+#main-menu.is-expanded>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>a>.account--box>.account--actions {
+  transform: translateX(0%);
+  transition-delay: 0.8s;
+  opacity: 1;
 }
 
 #main-menu>#mm--main>#mm--accounts>.accounts--list>.accounts--list--groups>.accounts--group>.group--content>.accounts--list>.accounts--item>a>.account--box>.account--actions>i {
@@ -300,7 +376,17 @@
   bottom: 0;
   padding: 20px;
   background-image: linear-gradient(0deg, white, white, rgba(255, 255, 255, 0));
+  transition: transform 0.4s, opacity 0.4s;
+  transition-delay: 0s;
+  transform: translateY(100%);
   position: absolute;
+  opacity: 0;
+}
+
+#main-menu.is-expanded>#mm--footer {
+  opacity: 1;
+  transform: translateY(0%);
+  transition-delay: 0.6s;
 }
 
 #main-menu>#mm--footer>#btn-add-account {

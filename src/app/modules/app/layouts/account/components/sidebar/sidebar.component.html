@@ -1,8 +1,9 @@
-<div id="main-menu" class="is-expanded">
+<div id="main-menu" [ngClass]="{'is-expanded': expandMenu}" (mouseover)="expandMenu = true"
+  (mouseleave)="expandMenu = false">
   <div id="mm--header">
     <div id="mm--logo">
       <a [routerLink]="[ 'dashboard' ]">
-        <app-simplify-logo [size]="'nano'"></app-simplify-logo>
+        <app-simplify-logo [size]="(expandMenu) ? 'nano' : 'small'"></app-simplify-logo>
       </a>
     </div>
     <div id="mm--profile-extended">
@@ -42,11 +43,12 @@
     </div>
     <div id="mm--accounts">
       <ul class="accounts--list">
-        <ng-container *ngFor="let section of mainMenu">
+        <ng-container *ngFor="let section of mainMenu; let i = index">
           <li class="accounts--list--groups">
-            <div class="accounts--group">
-              <div class="group--head">
-                <h4>{{ section.name }}</h4>
+            <div class="accounts--group" [ngStyle]="{'transition-delay': (expandMenu) ? (0 + (i * 0.1)) + 's' : '' }">
+              <div class="group--head" [ngStyle]="{'transition-delay': (expandMenu) ? (0 + (i * 0.1)) + 's' : '' }">
+                <h4 [ngStyle]="{'transition-delay': (expandMenu) ? ((0.1 * mainMenu.length) + (i * 0.15)) + 's' : '' }">
+                  {{ section.name }}</h4>
               </div>
               <div class="group--content">
                 <ul class="accounts--list">
@@ -55,8 +57,9 @@
                       <a [routerLink]="setAccountUrl(option.type, option._id)" routerLinkActive="active">
                         <div class="account--box">
                           <div class="account--image">
-                            <div class="accounte--avatar">
-                              <div [style.backgroundImage]="'url(' + option.avatar + ')' | safe: 'style'"></div>
+                            <div class="account--avatar">
+                              <app-avatar-image [bgValue]="option.avatar || option.username"></app-avatar-image>
+                              <!-- <div [style.backgroundImage]="'url(' + option.avatar + ')' | safe: 'style'"></div> -->
                             </div>
                           </div>
                           <div class="account--details">
