@@ -21,6 +21,10 @@
   border-radius: 40px;
 }
 
+.btn.btn-padding-x2 {
+  padding: 0 40px;
+}
+
 .btn>i {
   margin-left: -3px;
   margin-right: 6px;
