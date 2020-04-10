@@ -2,7 +2,8 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
-  border-left: 1px solid #f8f8f8;
+  /* border-left: 1px solid #f8f8f8; */
+  border-left: 1px solid #f3f4f8;
   background-color: #fafafe;
 }
 
@@ -10,7 +11,8 @@
   width: 100%;
   height: 80px;
   padding: 12.5px 20px;
-  border-bottom: 1px solid #f8f8f8;
+  /* border-bottom: 1px solid #f8f8f8; */
+  border-bottom: 1px solid #f3f4f8;
   background-color: white;
 }
 
@@ -67,7 +69,8 @@
   width: 280px;
   height: 100%;
   padding: 40px;
-  border-right: 1px solid #f8f8f8;
+  /* border-right: 1px solid #f8f8f8; */
+  border-right: 1px solid #f3f4f8;
   background-color: #fff;
 }
 
@@ -155,19 +158,27 @@
   height: 100%;
   top: 0;
   right: 0;
+  display: flex;
+  flex-direction: row;
   position: absolute;
 }
 
-#template-mail>#tm--body>#tm--fc--mail-list>div {
-  width: 100%;
-  padding: 20px 40px;
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list {
+  width: 420px;
+  height: 100%;
+  /* border-right: 1px solid #f8f8f8; */
+  border-right: 1px solid #f3f4f8;
 }
 
-#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--header {
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>div {
+  width: 100%;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>#tm--fc--ml--header {
   height: 80px;
-  padding-top: 0;
-  padding-bottom: 0;
-  border-bottom: 1px solid #f8f8f8;
+  padding: 0 10px;
+  /* border-bottom: 1px solid #f8f8f8; */
+  border-bottom: 1px solid #f3f4f8;
   background-color: white;
   display: flex;
   flex-direction: row;
@@ -175,14 +186,14 @@
   align-items: center;
 }
 
-#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--header>.col,
-#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--header>.col>#ml--header--checkbox-dropdown,
-#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--header>.col>#ml--header--checkbox-dropdown>.ml--header--cd--box,
-#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--header>.col>#ml--header--filter-by-state,
-#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--header>.col>#ml--header--filter-by-state>ul,
-#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--header>.col>#ml--header--filter-by-state>ul>li,
-#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--header>.col>#ml--header--pagination,
-#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--header>.col>#ml--header--pagination>div {
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>#tm--fc--ml--header>.col,
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>#tm--fc--ml--header>.col>#ml--header--checkbox-dropdown,
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>#tm--fc--ml--header>.col>#ml--header--checkbox-dropdown>.ml--header--cd--box,
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>#tm--fc--ml--header>.col>#ml--header--filter-by-state,
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>#tm--fc--ml--header>.col>#ml--header--filter-by-state>ul,
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>#tm--fc--ml--header>.col>#ml--header--filter-by-state>ul>li,
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>#tm--fc--ml--header>.col>#ml--header--pagination,
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>#tm--fc--ml--header>.col>#ml--header--pagination>div {
   height: 100%;
   display: flex;
   flex-direction: row;
@@ -190,117 +201,153 @@
   align-items: center;
 }
 
-#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--header>.col>div:not(:last-of-type) {
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>#tm--fc--ml--header>.col>div:not(:last-of-type) {
   margin-right: 40px;
 }
 
-#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--header>.col>#ml--header--checkbox-dropdown {
-  padding-left: 10px;
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>#tm--fc--ml--header>.col>#ml--header--checkbox-dropdown {
   cursor: pointer;
 }
 
-#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--header>.col>#ml--header--checkbox-dropdown>.ml--header--cd--box {
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>#tm--fc--ml--header>.col>#ml--header--checkbox-dropdown>.ml--header--cd--box {
   height: auto;
   padding: 10px;
 }
 
-#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--header>.col>#ml--header--checkbox-dropdown>.ml--header--cd--box>i:last-of-type {
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>#tm--fc--ml--header>.col>#ml--header--checkbox-dropdown>.ml--header--cd--box>i:last-of-type {
   margin-left: 4px;
   font-size: 14px;
 }
 
-#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--header>.col>#ml--header--filter-by-state>ul>li {
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>#tm--fc--ml--header>.col>#ml--header--filter-by-state>ul>li {
   padding: 12px;
   opacity: 0.5;
   display: inline-flex;
   cursor: pointer;
 }
 
-#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--header>.col>#ml--header--filter-by-state>ul>li.active {
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>#tm--fc--ml--header>.col>#ml--header--filter-by-state>ul>li.active {
   font-weight: 500;
   color: #5a77fe;
   opacity: 1;
 }
 
-#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--header>.col>#ml--header--pagination>#pagination--arrow-left {
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>#tm--fc--ml--header>.col>#ml--header--pagination>#pagination--arrow-left {
   margin-right: 8px;
 }
 
-#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--header>.col>#ml--header--pagination>#pagination--pages {
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>#tm--fc--ml--header>.col>#ml--header--pagination>#pagination--pages {
   font-weight: 500;
 }
 
-#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--header>.col>#ml--header--pagination>#pagination--arrow-right {
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>#tm--fc--ml--header>.col>#ml--header--pagination>#pagination--arrow-right {
   margin-left: 8px;
 }
 
-#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--header>.col>#ml--header--pagination>#pagination--arrow-left:not(.is-disabled),
-#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--header>.col>#ml--header--pagination>#pagination--arrow-right:not(.is-disabled) {
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>#tm--fc--ml--header>.col>#ml--header--pagination>#pagination--arrow-left:not(.is-disabled),
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>#tm--fc--ml--header>.col>#ml--header--pagination>#pagination--arrow-right:not(.is-disabled) {
   color: #5a77fe;
   cursor: pointer;
 }
 
-#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--header>.col>#ml--header--pagination>#pagination--arrow-left.is-disabled,
-#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--header>.col>#ml--header--pagination>#pagination--arrow-right.is-disabled {
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>#tm--fc--ml--header>.col>#ml--header--pagination>#pagination--arrow-left.is-disabled,
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>#tm--fc--ml--header>.col>#ml--header--pagination>#pagination--arrow-right.is-disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
-#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--header>.col>#ml--header--pagination>#pagination--arrow-left>i,
-#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--header>.col>#ml--header--pagination>#pagination--arrow-right>i {
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>#tm--fc--ml--header>.col>#ml--header--pagination>#pagination--arrow-left>i,
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>#tm--fc--ml--header>.col>#ml--header--pagination>#pagination--arrow-right>i {
   color: inherit;
 }
 
-#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--main {
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>#tm--fc--ml--main {
   height: calc(100% - 80px);
+  overflow: auto;
 }
 
-#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--main>.msg-group {
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>#tm--fc--ml--main>.msg-group {
   width: 100%;
   margin: 0 auto;
-  border: 1px solid #f6f5f9;
-  border-radius: 4px;
-  box-shadow: 0 10px 25px #f1f1f1;
   background-color: white;
   display: block;
   overflow: hidden;
 }
 
-#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--main>.msg-group>ul,
-#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--main>.msg-group>ul>li.mg--message,
-#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--main>.msg-group>ul>li.mg--message>.mg--message--box {
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>#tm--fc--ml--main>.msg-group>ul,
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>#tm--fc--ml--main>.msg-group>ul>li.mg--message,
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>#tm--fc--ml--main>.msg-group>ul>li.mg--message>.mg--message--box {
   width: 100%;
 }
 
-#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--main>.msg-group>ul>li.mg--message:not(:last-of-type) {
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>#tm--fc--ml--main>.msg-group>ul>li.mg--message {
   border-bottom: 1px solid #f6f5f9;
 }
 
-#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--main>.msg-group>ul>li.mg--message>.mg--message--box {
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>#tm--fc--ml--main>.msg-group>ul>li.mg--message.is-open {
+  background-color: #eff2ffd4;
+  border-right: 2px solid #5a77fe;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>#tm--fc--ml--main>.msg-group>ul>li.mg--message>.mg--message--box {
   padding: 14px 20px;
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-
-#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--main>.msg-group>ul>li.mg--message>.mg--message--box>div:not(:last-of-type) {
-  padding-right: 10px;
-}
-
-#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--main>.msg-group>ul>li.mg--message>.mg--message--box>.mg--message--selector {
-  width: 32px;
-}
-
-#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--main>.msg-group>ul>li.mg--message>.mg--message--box>.mg--message--selector>i {
+  justify-content: flex-end;
+  align-items: flex-start;
   cursor: pointer;
 }
 
-#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--main>.msg-group>ul>li.mg--message>.mg--message--box>.mg--message--transmitter {
-  width: 240px;
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>#tm--fc--ml--main>.msg-group>ul>li.mg--message>.mg--message--box>.mg--message--col-left {
+  width: 24px;
+  height: 100%;
+  left: 0;
+  margin-left: -20px;
+  transform: translateX(-100%);
+  transition: transform 0.4s, margin-left 0.4s;
+  position: absolute;
 }
 
-#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--main>.msg-group>ul>li.mg--message>.mg--message--box>.mg--message--transmitter>.mg--user-details {
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>#tm--fc--ml--main>.msg-group>ul>li.mg--message>.mg--message--box:hover>.mg--message--col-left {
+  margin-left: 20px;
+  transform: translateX(0%);
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>#tm--fc--ml--main>.msg-group>ul>li.mg--message>.mg--message--box>.mg--message--col-right {
+  width: 100%;
+  height: 100%;
+  transition: width 0.4s;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>#tm--fc--ml--main>.msg-group>ul>li.mg--message>.mg--message--box:hover>.mg--message--col-right {
+  width: calc(100% - 24px);
+  height: 100%;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>#tm--fc--ml--main>.msg-group>ul>li.mg--message>.mg--message--box>.mg--message--col-left>.mg--message--selector {
+  width: 100%;
+  height: 38px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>#tm--fc--ml--main>.msg-group>ul>li.mg--message>.mg--message--box>.mg--message--col-left>.mg--message--selector>i {
+  cursor: pointer;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>#tm--fc--ml--main>.msg-group>ul>li.mg--message>.mg--message--box>.mg--message--col-right>.mg--message--header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>#tm--fc--ml--main>.msg-group>ul>li.mg--message>.mg--message--box>.mg--message--col-right>.mg--message--header>.mg--message--transmitter {
+  width: 100%;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>#tm--fc--ml--main>.msg-group>ul>li.mg--message>.mg--message--box>.mg--message--col-right>.mg--message--header>.mg--message--transmitter>.mg--user-details {
   width: 100%;
   max-width: 100%;
   text-overflow: ellipsis;
@@ -312,7 +359,7 @@
   overflow: hidden;
 }
 
-#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--main>.msg-group>ul>li.mg--message>.mg--message--box>.mg--message--transmitter>.mg--user-details>.mg--user-details--avatar {
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>#tm--fc--ml--main>.msg-group>ul>li.mg--message>.mg--message--box>.mg--message--col-right>.mg--message--header>.mg--message--transmitter>.mg--user-details>.mg--user-details--avatar {
   width: 38px;
   min-width: 38px;
   height: 38px;
@@ -322,12 +369,12 @@
   overflow: hidden;
 }
 
-#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--main>.msg-group>ul>li.mg--message>.mg--message--box>.mg--message--transmitter>.mg--user-details>.mg--user-details--name {
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>#tm--fc--ml--main>.msg-group>ul>li.mg--message>.mg--message--box>.mg--message--col-right>.mg--message--header>.mg--message--transmitter>.mg--user-details>.mg--user-details--name {
   width: calc(100% - 38px);
   overflow: hidden;
 }
 
-#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--main>.msg-group>ul>li.mg--message>.mg--message--box>.mg--message--transmitter>.mg--user-details>.mg--user-details--name>span {
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>#tm--fc--ml--main>.msg-group>ul>li.mg--message>.mg--message--box>.mg--message--col-right>.mg--message--header>.mg--message--transmitter>.mg--user-details>.mg--user-details--name>span {
   width: 100%;
   max-width: 100%;
   text-overflow: ellipsis;
@@ -336,33 +383,332 @@
   display: inline-block;
 }
 
-
-#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--main>.msg-group>ul>li.mg--message>.mg--message--box>.mg--message--content {
-  width: calc(100% - (32px + 240px + 80px));
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>#tm--fc--ml--main>.msg-group>ul>li.mg--message>.mg--message--box>.mg--message--col-right>.mg--message--header>.mg--message--date {
+  width: 100%;
 }
 
-#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--main>.msg-group>ul>li.mg--message>.mg--message--box>.mg--message--content>p {
-  max-width: 100%;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-}
-
-#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--main>.msg-group>ul>li.mg--message>.mg--message--box>.mg--message--content>p>strong {
-  max-width: 100%;
-  font-weight: 500;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-}
-
-#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--main>.msg-group>ul>li.mg--message>.mg--message--box>.mg--message--date {
-  width: 80px;
-}
-
-#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--main>.msg-group>ul>li.mg--message>.mg--message--box>.mg--message--date>span {
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>#tm--fc--ml--main>.msg-group>ul>li.mg--message>.mg--message--box>.mg--message--col-right>.mg--message--header>.mg--message--date>span {
   width: 100%;
   color: #9b9eac;
   text-align: right;
   display: inline-block;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>#tm--fc--ml--main>.msg-group>ul>li.mg--message>.mg--message--box>.mg--message--col-right>.mg--message--body {
+  width: 100%;
+  padding-left: 48px;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>#tm--fc--ml--main>.msg-group>ul>li.mg--message>.mg--message--box>.mg--message--col-right>.mg--message--body>div {
+  width: 100%;
+  display: block;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>#tm--fc--ml--main>.msg-group>ul>li.mg--message>.mg--message--box>.mg--message--col-right>.mg--message--body>.mg--message--subject {
+  width: 90%;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>#tm--fc--ml--main>.msg-group>ul>li.mg--message>.mg--message--box>.mg--message--col-right>.mg--message--body>.mg--message--subject>p {
+  width: 100%;
+  font-weight: 400;
+  line-height: 1.4;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--list>#tm--fc--ml--main>.msg-group>ul>li.mg--message>.mg--message--box>.mg--message--col-right>.mg--message--body>.mg--message--content>p {
+  width: 100%;
+  font-size: 85%;
+  line-height: 1.4;
+  overflow: hidden;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail {
+  width: calc(100% - 420px);
+  height: 100%;
+  background-color: #ffffff;
+}
+
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview,
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--header,
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--header>.mp--transmitter,
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--header>.mp--transmitter>.mp--t-details {
+  width: 100%;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview {
+  height: 100%;
+  padding: 30px 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--header {
+  padding-bottom: 15px;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--header,
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--header>.mp--transmitter>.mp--t-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--header>.mp--transmitter>.mp--t-details>.mp--t-details--avatar {
+  width: 38px;
+  height: 38px;
+  margin-right: 10px;
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--header>.mp--transmitter>.mp--t-details>.mp--t-details--name {
+  width: calc(100% - 48px);
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--header>.mp--transmitter>.mp--t-details>.mp--t-details--name>span {
+  width: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--header>.mp--more-options {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--header>.mp--more-options>div:not(:last-of-type) {
+  padding: 10px 20px;
+  margin-right: 10px;
+  /* border-right: 1px solid #f8f8f8; */
+  border-right: 1px solid #f3f4f8;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--header>.mp--more-options>.mp--reception-date>span {
+  color: #9b9eac;
+  white-space: nowrap;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--header>.mp--more-options>.mp--actions>ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--header>.mp--more-options>.mp--actions>ul>li {
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--header>.mp--more-options>.mp--actions>ul>li>i.material-icons {
+  color: #9b9eac;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--body,
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--body>div,
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--body>.mp--c--subject>h5 {
+  width: 100%;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--body {
+  height: 100%;
+  padding: 20px 0;
+  padding-top: 10px;
+  /* border-bottom: 1px solid #f8f8f8; */
+  border-bottom: 1px solid #f3f4f8;
+  overflow: auto;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--body>div:last-child {
+  margin-bottom: 10px;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--body>.mp--c--subject {
+  margin-bottom: 15px;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--body>.mp--c--subject>h5 {
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--body>.mp--c--content {
+  line-height: 1.4;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--footer,
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--footer>.mp--reply-form #template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--footer>.mp--reply-form>div,
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--footer>.mp--reply-form>.mp--rf--header>h6 {
+  width: 100%;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--footer {
+  padding-top: 20px;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--footer>.mp--reply-form>.mp--rf--header {
+  margin-bottom: 20px;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--footer>.mp--reply-form>.mp--rf--header>h6 {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--footer>.mp--reply-form>.mp--rf--body {
+  min-height: 161.5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--footer>.mp--reply-form>.mp--rf--body>.mp--rf--receivers {
+  padding-right: 15px;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--footer>.mp--reply-form>.mp--rf--body>.mp--rf--receivers>ul>.rl--receiver {
+  width: 38px;
+  height: 38px;
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--footer>.mp--reply-form>.mp--rf--body>.mp--rf--form {
+  width: calc(100% - 53px);
+  border-radius: 6px;
+  background-color: #f5f5f5;
+  overflow: hidden;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--footer>.mp--reply-form>.mp--rf--body>.mp--rf--form>form,
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--footer>.mp--reply-form>.mp--rf--body>.mp--rf--form>form>div,
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--footer>.mp--reply-form>.mp--rf--body>.mp--rf--form>form>.f--options>ul {
+  width: 100%;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--footer>.mp--reply-form>.mp--rf--body>.mp--rf--form>form>.f--header {
+  padding: 10px;
+  padding-bottom: 0;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--footer>.mp--reply-form>.mp--rf--body>.mp--rf--form>form>.f--header>div {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--footer>.mp--reply-form>.mp--rf--body>.mp--rf--form>form>.f--header>.f--header-main>.f--reply-type {
+  width: 34px;
+  padding-right: 10px;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--footer>.mp--reply-form>.mp--rf--body>.mp--rf--form>form>.f--header>.f--header-main>.f--reply-to {
+  width: calc(100% - 34px);
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--footer>.mp--reply-form>.mp--rf--body>.mp--rf--form>form>.f--header>.f--header-main>.f--reply-to>ul {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--footer>.mp--reply-form>.mp--rf--body>.mp--rf--form>form>.f--header>.f--header-main>.f--reply-to>ul>li {
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--footer>.mp--reply-form>.mp--rf--body>.mp--rf--form>form>.f--header>.f--header-main>.f--reply-to>ul>li:not(:first-of-type) {
+  padding-left: 5px;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--footer>.mp--reply-form>.mp--rf--body>.mp--rf--form>form>.f--header>.f--header-main>.f--reply-to>ul>li.btn-add-receiver {
+  color: #9b9eac;
+  line-height: 0;
+  cursor: pointer;
+  opacity: 0;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--footer>.mp--reply-form>.mp--rf--body>.mp--rf--form>form>.f--header>.f--header-main>.f--reply-to:hover>ul>li.btn-add-receiver {
+  opacity: 1;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--footer>.mp--reply-form>.mp--rf--body>.mp--rf--form>form>.f--header>.f--header-main>.f--reply-to>ul>li>span {
+  font-size: 16px;
+  font-weight: 400;
+  color: inherit;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--footer>.mp--reply-form>.mp--rf--body>.mp--rf--form>form>.f--header>.f--header-main>.f--reply-to>ul>li.btn-add-receiver>span>i {
+  font-size: 18px;
+  color: inherit;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--footer>.mp--reply-form>.mp--rf--body>.mp--rf--form>form>.f--body>textarea {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background-color: transparent;
+  resize: none;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--footer>.mp--reply-form>.mp--rf--body>.mp--rf--form>form>.f--options>ul,
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--footer>.mp--reply-form>.mp--rf--body>.mp--rf--form>form>.f--options>ul>li>ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--footer>.mp--reply-form>.mp--rf--body>.mp--rf--form>form>.f--options>ul>li>ul>li {
+  height: 45px;
+  padding: 10px;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--footer>.mp--reply-form>.mp--rf--body>.mp--rf--form>form>.f--options>ul>li>ul>li:not(:last-of-type) {
+  border-right: 1px solid #e8e8e9;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--footer>.mp--reply-form>.mp--rf--body>.mp--rf--form>form>.f--options>ul>li:last-of-type>ul>li:nth-child(2) {
+  border-right: none;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--footer>.mp--reply-form>.mp--rf--body>.mp--rf--form>form>.f--options>ul>li:last-child>ul>li:last-of-type {
+  padding: 0;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--footer>.mp--reply-form>.mp--rf--body>.mp--rf--form>form>.f--options>ul>li:last-child>ul>li:last-of-type>button.btn.btn-submit {
+  margin: 0;
+  border-radius: 2px 0 6px 0;
+  font-weight: 400;
+  box-shadow: none;
+}
+
+#template-mail>#tm--body>#tm--fc--mail-list>#tm--fc--ml--mail>.mail-preview>.mp--footer>.mp--reply-form>.mp--rf--body>.mp--rf--form>form>.f--options>ul>li:last-child>ul>li:last-of-type>button.btn.btn-submit>span {
+  margin-left: 5px;
+  font-weight: inherit;
 }

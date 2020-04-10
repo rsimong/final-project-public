@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-avatar-image',
@@ -16,20 +16,24 @@ export class AvatarImageComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnChanges(changes: SimpleChanges): void {
     this.setBackgroundValue();
   }
 
+  ngOnInit() {
+    // this.setBackgroundValue();
+  }
+
   setBackgroundValue() {
-    console.log(this.bgValue);
+    // console.log(this.bgValue);
     if (/\.(?:JPG|PNG|GIF|JEPG|webp)$/gi.test(this.bgValue)) {
       this.backgroundImgValue = `url('${this.bgValue}')`;
     } else {
-      const valueCleaned = this.bgValue.substring(0, this.bgValue.indexOf("@"));
+      const valueCleaned = this.bgValue.substring(0, this.bgValue.search(/(?:@|\s|$)/));
       const color = `#${this.intToRGB(this.hashCode(valueCleaned))}`;
       this.acronymName = valueCleaned.substring(0, 1).toUpperCase();
       this.colorValue = `${color}99`;
-      this.backgroundColorValue = `${color}12`;
+      this.backgroundColorValue = `${color}1f`;
     }
   }
 

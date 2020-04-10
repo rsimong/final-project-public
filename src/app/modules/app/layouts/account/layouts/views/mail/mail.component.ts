@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import moment from "moment";
+import * as mails from "@fakedb/outlookMessages.json";
 
 @Component({
   selector: 'app-mail',
@@ -8,13 +10,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class MailComponent implements OnInit {
 
-  pagination = {
-    page: 1,
-    pages: 4,
-    itemsPerPages: 50
-  };
-
   searcherForm: FormGroup;
+  mailForm: FormGroup;
 
   foldersList = [
     [
@@ -30,35 +27,9 @@ export class MailComponent implements OnInit {
     ]
   ];
 
-  response = [];
-
+  messageOpened: number[] = [0, 0];
   messagesGroups = [
-    [
-      {
-        id: 1,
-        from: 'jmartinez@gmail.com',
-        to: ['jmartinez@gmail.com'],
-        subject: 'Hola mundo!',
-        body: ['Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sodales tellus a auctor suscipit. Fusce aliquet rutrum nulla, nec vulputate nibh lobortis in. Donec sit amet risus volutpat, commodo metus ac, dictum orci. Sed posuere quam risus, non efficitur lorem tincidunt et. Sed et magna nec libero iaculis mattis eget in ante. Curabitur ac erat sed purus egestas ornare. Nullam elementum leo a quam finibus mollis. Sed feugiat sollicitudin dui, et mattis risus efficitur eu. Aliquam ornare augue a ante lobortis ullamcorper. Maecenas mattis sagittis urna id posuere. Aliquam vulputate tortor ipsum, sed pharetra magna ultrices a. Mauris pharetra consequat porttitor. Duis libero enim, cursus id mi suscipit, eleifend ultricies eros. '],
-        sended: ''
-      },
-      {
-        id: 2,
-        from: 'rsimon@gmail.com',
-        to: ['jmartinez@gmail.com'],
-        subject: 'Hola mundo!',
-        body: ['Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sodales tellus a auctor suscipit. Fusce aliquet rutrum nulla, nec vulputate nibh lobortis in. Donec sit amet risus volutpat, commodo metus ac, dictum orci. Sed posuere quam risus, non efficitur lorem tincidunt et. Sed et magna nec libero iaculis mattis eget in ante. Curabitur ac erat sed purus egestas ornare. Nullam elementum leo a quam finibus mollis. Sed feugiat sollicitudin dui, et mattis risus efficitur eu. Aliquam ornare augue a ante lobortis ullamcorper. Maecenas mattis sagittis urna id posuere. Aliquam vulputate tortor ipsum, sed pharetra magna ultrices a. Mauris pharetra consequat porttitor. Duis libero enim, cursus id mi suscipit, eleifend ultricies eros. '],
-        sended: ''
-      },
-      {
-        id: 3,
-        from: 'oriol@gmail.com',
-        to: ['jmartinez@gmail.com'],
-        subject: 'Hola mundo!',
-        body: ['Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sodales tellus a auctor suscipit. Fusce aliquet rutrum nulla, nec vulputate nibh lobortis in. Donec sit amet risus volutpat, commodo metus ac, dictum orci. Sed posuere quam risus, non efficitur lorem tincidunt et. Sed et magna nec libero iaculis mattis eget in ante. Curabitur ac erat sed purus egestas ornare. Nullam elementum leo a quam finibus mollis. Sed feugiat sollicitudin dui, et mattis risus efficitur eu. Aliquam ornare augue a ante lobortis ullamcorper. Maecenas mattis sagittis urna id posuere. Aliquam vulputate tortor ipsum, sed pharetra magna ultrices a. Mauris pharetra consequat porttitor. Duis libero enim, cursus id mi suscipit, eleifend ultricies eros. '],
-        sended: ''
-      },
-    ]
+    [...mails.response]
   ];
 
   constructor(
@@ -68,6 +39,11 @@ export class MailComponent implements OnInit {
   ngOnInit() {
     this.searcherForm = this.fb.group({
       searcher: ['']
+    });
+
+    this.mailForm = this.fb.group({
+      senders: [''],
+      body: ''
     });
   }
 
@@ -85,6 +61,42 @@ export class MailComponent implements OnInit {
       return;
     }
     console.log(this.searcherForm.value);
+  }
+
+  getPreviewTextMessage(txt: string) {
+    const maxTextLength = 78;
+    if (txt.length > maxTextLength) {
+      return `${txt.substring(0, maxTextLength)}...`;
+    }
+    return txt;
+  }
+
+  readMessage(iGroup: number, iMessage: number) {
+    this.messageOpened = [iGroup, iMessage];
+  }
+
+  getDateWithFormatMailList(date: string): string {
+    if (moment(date, [moment.ISO_8601]).diff(moment(), 'days') >= -2) {
+      return moment(date, [moment.ISO_8601]).format("H:mm");
+    } else {
+      return moment(date, [moment.ISO_8601]).format("D MMM");
+    }
+  }
+
+  getDateWithFormatMailContent(date: string): string {
+    if (moment(date, [moment.ISO_8601]).diff(moment(), 'days') >= -2) {
+      if (moment(date, [moment.ISO_8601]).diff(moment(), 'days') === 0) {
+        return moment(date, [moment.ISO_8601]).format("[Today], h:mmA");
+      } else if (moment(date, [moment.ISO_8601]).diff(moment(), 'days') === -1) {
+        return moment(date, [moment.ISO_8601]).format("[Yesterday], h:mmA");
+      }
+    } else {
+      return moment(date, [moment.ISO_8601]).format("dddd, MMM D, YYYY h:mmA");
+    }
+  }
+
+  sendReply() {
+    console.log(this.mailForm);
   }
 
 }
