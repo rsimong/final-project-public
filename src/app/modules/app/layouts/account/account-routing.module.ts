@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AccountComponent } from './account.component';
 import { DashboardComponent } from "./layouts/dashboard/dashboard.component";
 import { MailComponent } from "./layouts/views/mail/mail.component";
+import { ChatComponent } from './layouts/views/chat/chat.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,10 @@ const routes: Routes = [
           {
             path: 'mail/:accountId',
             component: MailComponent
+          },
+          {
+            path: 'chat/:accountId',
+            component: ChatComponent
           }
         ]
       },

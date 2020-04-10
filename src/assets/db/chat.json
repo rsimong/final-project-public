@@ -1,0 +1,86 @@
+{
+  "channel": {
+    "info": {
+      "response": {
+        "ok": true,
+        "channel": {
+          "id": "C1H9RESGL",
+          "name": "Simply - Chat View",
+          "is_channel": true,
+          "created": 1466025154,
+          "creator": "Ricard Simón",
+          "is_archived": false,
+          "is_general": false,
+          "name_normalized": "Simply - Chat View",
+          "is_shared": false,
+          "is_org_shared": false,
+          "is_member": true,
+          "is_private": false,
+          "is_mpim": false,
+          "last_read": "1503435939.000101",
+          "latest": {
+            "text": "Containment unit is 98% full",
+            "username": "ecto1138",
+            "bot_id": "B19LU7CSY",
+            "attachments": [{
+              "text": "Don't get too attached",
+              "id": 1,
+              "fallback": "This is an attachment fallback"
+            }],
+            "type": "message",
+            "subtype": "bot_message",
+            "ts": "1503435956.000247"
+          },
+          "unread_count": 1,
+          "unread_count_display": 1,
+          "members": [
+            "Ricard Simón",
+            "Julia Martínez"
+          ],
+          "topic": {
+            "value": "This is a test chat",
+            "creator": "Ricard Simón",
+            "last_set": 1503435128
+          },
+          "purpose": {
+            "value": "This is a chat created for testing during the development of the Simplify application",
+            "creator": "Ricard Simón",
+            "last_set": 1503435128
+          },
+          "previous_names": []
+        }
+      }
+    },
+    "history": {
+      "response": {
+        "ok": true,
+        "messages": [{
+            "type": "message",
+            "channel": "C2147483705",
+            "user": "Ricard Simón",
+            "text": "We've invited you to the spreadsheet we did yesterday, but in case we will put it here for u guys 😉. Let me know, if everything seems to be clear for you. We can schedules the hangout meeting later, if you want.",
+            "ts": "2020-03-25T20:23:00.000Z",
+            "edited": {
+              "user": "U2147483697",
+              "ts": "2020-03-25T20:24:00.000Z"
+            }
+          },
+          {
+            "type": "message",
+            "channel": "C2147483705",
+            "user": "Ricard Simón",
+            "text": "Just let me know.",
+            "ts": "2020-03-25T20:25:00.000Z"
+          },
+          {
+            "type": "message",
+            "channel": "C2147483705",
+            "user": "Julia Martínez",
+            "text": "We're sending to you recent file, please review it internally and send us a feedback 😊",
+            "ts": "2020-03-26T09:04:00.000Z"
+          }
+        ]
+      }
+    }
+  }
+}

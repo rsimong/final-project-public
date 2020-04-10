@@ -23,7 +23,7 @@ export class SidebarComponent implements OnInit {
   routesByAccountType = {
     'facebook': '',
     'gmail': 'mail/:idAccount',
-    'slack': ''
+    'slack': 'chat/:idAccount'
   };
 
   constructor(
@@ -79,10 +79,10 @@ export class SidebarComponent implements OnInit {
   checkTemplateRoute(type) {
     const route = this.routesByAccountType[type];
     if (route && route != '') {
-      console.log(route);
+      // console.log(route);
       return true;
     } else {
-      console.log('Route not defined!');
+      // console.log('Route not defined!');
       return false;
     }
   }
