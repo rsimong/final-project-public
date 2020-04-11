@@ -181,7 +181,7 @@
               <div class="ppc--avatar" [style.background-image]="'url(' + user.avatar + ')' | safe: 'style'"></div>
               <div class="ppc--details">
                 <div class="ppc--details--box">
-                  <h5>{{ profileForm.value.name || user.name }} {{ profileForm.value.surname || user.surname }}</h5>
+                  <h5>{{ profileForm.value.name || user.name }} {{ profileForm.value.surnames || user.surnames }}</h5>
                   <p>{{ profileForm.value.email || user.email }}</p>
                 </div>
               </div>
@@ -195,7 +195,7 @@
                       <input type="text" name="name" placeholder="Name" formControlName="name" />
                     </label>
                     <label>
-                      <input type="text" name="surname" placeholder="Surnames" formControlName="surname" />
+                      <input type="text" name="surname" placeholder="Surnames" formControlName="surnames" />
                     </label>
                   </form>
                 </div>

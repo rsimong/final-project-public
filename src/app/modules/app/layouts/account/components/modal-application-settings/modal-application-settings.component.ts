@@ -132,7 +132,7 @@ export class ModalApplicationSettingsComponent implements OnInit {
     this.profileForm = this.fb.group({
       avatar: [''],
       name: [''],
-      surname: [''],
+      surnames: [''],
       email: [''],
       settings: this.fb.group({
         language: ['es'],
