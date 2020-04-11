@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { AuthenticationService } from '@core/authentication/authentication.service';
+import { UserService } from '@shared/services/user.service';
+import { ReplyUser } from '@models/replyUser';
 
 @Component({
   selector: 'app-account',
@@ -13,6 +15,7 @@ export class AccountComponent implements OnInit {
   showSettingsModal: boolean;
 
   constructor(
+    private userService: UserService,
     private authenticationService: AuthenticationService
   ) {
     this.showStoreModal = false;
@@ -20,6 +23,11 @@ export class AccountComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.userService.getProfile().subscribe(
+      (user: ReplyUser) => {
+        console.log(user);
+      }
+    );
   }
 
   toogleStoreModal() {
@@ -30,8 +38,8 @@ export class AccountComponent implements OnInit {
     this.showSettingsModal = !this.showSettingsModal;
   }
 
-  logout() {
-    this.authenticationService.logout();
-  }
+  // logout() {
+  //   this.authenticationService.logout();
+  // }
 
 }

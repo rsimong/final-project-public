@@ -1,51 +1,50 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 import { environment } from '@env';
-import { User } from '@models/user';
+import { ReplyUser } from '@app/shared/models/replyUser';
+import { RequestLogin } from '@models/requestLogin';
+import { RequestRegister } from '@models/requestRegister';
+import { ReplyAuth } from '@models/replyAuth';
+import { map } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
-  private currentUserSubject: BehaviorSubject<any>;
-  public currentUser: Observable<any>;
 
   constructor(
-    private http: HttpClient,
-    private router: Router
-  ) {
-    this.currentUserSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('currentUser')));
-    this.currentUser = this.currentUserSubject.asObservable();
+    private router: Router,
+    private http: HttpClient
+  ) { }
+
+  login(body: RequestLogin): Promise<ReplyAuth> {
+    return this.http.post<ReplyAuth>(`${environment.apiUrl}/auth/login`, { ...body })
+      .pipe<ReplyAuth>(map<ReplyAuth, ReplyAuth>((value: ReplyAuth) => {
+        localStorage.setItem('authToken', value.access_token);
+        return value;
+      }))
+      .toPromise();
   }
 
-  public get currentUserValue(): User {
-    return this.currentUserSubject.value;
-  }
-
-  login(username: string, password: string) {
-    return this.http.post(`${environment.apiUrl}/users/authenticate`, { username, password })
-      .pipe(map((user: User) => {
-        // store user details and basic auth credentials in local storage to keep user logged in between page refreshes
-        user.authdata = window.btoa(username + ':' + password);
-        localStorage.setItem('currentUser', JSON.stringify(user));
-        this.currentUserSubject.next(user);
-        if (localStorage.getItem('lastUser')) { localStorage.removeItem('lastUser'); }
-        return user;
-      }));
+  register(body: RequestRegister): Promise<ReplyAuth> {
+    return this.http.post<ReplyAuth>(`${environment.apiUrl}/auth/register`, { ...body })
+      .pipe<ReplyAuth>(map<ReplyAuth, ReplyAuth>((value: ReplyAuth) => {
+        localStorage.setItem('authToken', value.access_token);
+        return value;
+      }))
+      .toPromise();
   }
 
   logout() {
-    localStorage.setItem('lastUser', JSON.stringify({
-      username: this.currentUserValue.username,
-      name: this.currentUserValue.name,
-      surname: this.currentUserValue.surname,
-      avatar: this.currentUserValue.avatar
-    }));
-    // remove user from local storage to log user out
-    localStorage.removeItem('currentUser');
-    this.currentUserSubject.next(null);
+    // localStorage.setItem('lastUser', JSON.stringify({
+    //   username: this.currentUserValue.username,
+    //   name: this.currentUserValue.name,
+    //   surname: this.currentUserValue.surname,
+    //   avatar: this.currentUserValue.avatar
+    // }));
+    // // remove user from local storage to log user out
+    // localStorage.removeItem('currentUser');
+    // this.currentUserSubject.next(null);
     this.router.navigate(['/app/auth/login']);
   }
 }

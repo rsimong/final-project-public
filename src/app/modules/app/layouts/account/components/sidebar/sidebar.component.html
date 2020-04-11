@@ -10,14 +10,14 @@
       <div id="mm--profile-extended--container">
         <div class="profile">
           <div class="profile-avatar">
-            <div [style.background-image]="'url(' + user.avatar + ')' | safe: 'style'"></div>
+            <div [style.background-image]="'url(' + user?.avatar + ')' | safe: 'style'"></div>
           </div>
           <div class="profile-details">
             <div class="profile-details--user">
-              <h4>{{ user.name }} {{ user.surname }}</h4>
+              <h4>{{ user?.name }} {{ user?.surname }}</h4>
             </div>
             <div class="profile-details--username">
-              <p>{{ user.email }}</p>
+              <p>{{ user?.email }}</p>
             </div>
           </div>
         </div>

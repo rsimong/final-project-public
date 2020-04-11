@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { AuthenticationService } from '@core/authentication/authentication.service';
-import { User } from '@models/user';
+import { ReplyUser } from '@app/shared/models/replyUser';
 import { Account } from '@models/account';
 
 @Component({
@@ -14,7 +14,7 @@ export class SidebarComponent implements OnInit {
   @Output() changeStateStoreModal = new EventEmitter<Boolean>();
   @Output() changeStateSettingsModal = new EventEmitter<Boolean>();
 
-  user: User;
+  user: ReplyUser;
 
   expandMenu = false;
 
@@ -31,7 +31,7 @@ export class SidebarComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.user = this.authenticationService.currentUserValue;
+    this.user = null; // this.authenticationService.currentUserValue;
     this.setMainMenu();
   }
 
@@ -47,6 +47,7 @@ export class SidebarComponent implements OnInit {
     const sections = [];
     const mainMenuTemp = {};
     const mainMenuDefinitive = [];
+    if (!this.user) return;
     this.user.accounts.forEach((account: Account) => {
       const isNew = sections.find((section) => section === account.type);
       if (!isNew) {
