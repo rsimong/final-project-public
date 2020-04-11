@@ -5,7 +5,7 @@
         <ng-container *ngIf="!lastUser.detected; then showUserField; else showLastUser"></ng-container>
         <ng-template #showUserField>
           <span>Username</span>
-          <input type="text" placeholder="Username" formControlName="user" name="user" autocomplete="off" />
+          <input type="text" placeholder="Username" formControlName="username" name="username" autocomplete="off" />
         </ng-template>
         <ng-template #showLastUser>
           <div class="login-layout--last-user">
@@ -20,12 +20,12 @@
               <div [style.background-image]="'url(' + lastUser.avatar + ')'"></div>
             </div>
           </div>
-          <input type="hidden" formControlName="user" name="user" autocomplete="off" />
+          <input type="hidden" formControlName="username" name="username" autocomplete="off" />
         </ng-template>
       </label>
       <label>
         <span>Password</span>
-        <input type="password" placeholder="Password" formControlName="pass" name="pass" autocomplete="off" />
+        <input type="password" placeholder="Password" formControlName="password" name="password" autocomplete="off" />
       </label>
       <button type="submit">Login</button>
       <p>Forgot Password</p>

@@ -8,6 +8,9 @@ import { AccountRoutingModule } from './account-routing.module';
 /* Import Shared Module */
 import { SharedModule } from '@shared/shared.module';
 
+/* Import Services */
+import { UserService } from '@shared/services/user.service';
+
 /* Import Components */
 import { AccountComponent } from './account.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -36,6 +39,9 @@ import { ChatComponent } from './layouts/views/chat/chat.component';
     ReactiveFormsModule,
     AccountRoutingModule,
     SharedModule
+  ],
+  providers: [
+    UserService
   ]
 })
 export class AccountModule { }

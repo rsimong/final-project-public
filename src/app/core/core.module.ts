@@ -2,9 +2,6 @@ import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
-// Import _fakeBackend
-import { fakeBackendProvider } from '@core/_fakeBackend/fake-backend';
-
 // Import Authentication Services
 import { AuthenticationService } from '@core/authentication/authentication.service';
 

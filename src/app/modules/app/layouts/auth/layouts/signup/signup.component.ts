@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+
+import { AuthenticationService } from '@core/authentication/authentication.service';
 
 @Component({
   selector: 'app-signup',
@@ -9,15 +12,17 @@ import { Title } from '@angular/platform-browser';
 })
 export class SignupComponent implements OnInit {
 
-  signupForm = this.fb.group({
-    user: ['', Validators.required],
-    pass: ['', Validators.required],
-    confirmPass: ['', Validators.required]
+  signupForm: FormGroup = this.fb.group({
+    username: ['', Validators.required],
+    password: ['', Validators.required],
+    repeat_password: ['', Validators.required]
   });
 
   constructor(
+    private router: Router,
     private fb: FormBuilder,
-    private titleService: Title
+    private titleService: Title,
+    private authenticationService: AuthenticationService
   ) { }
 
   ngOnInit() {
@@ -25,11 +30,11 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.signupForm.invalid) {
-      return;
-    }
+    if (!this.signupForm.valid) return;
 
-    console.log(this.signupForm.value);
+    this.authenticationService.register(this.signupForm.value)
+      .then(() => this.router.navigate(['/', 'app']))
+      .catch((err) => console.log(err));
   }
 
 }

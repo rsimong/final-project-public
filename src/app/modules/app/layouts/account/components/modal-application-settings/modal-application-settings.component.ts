@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { AuthenticationService } from '@core/authentication/authentication.service';
-import { User } from '@models/user';
+import { ReplyUser } from '@app/shared/models/replyUser';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -13,7 +13,7 @@ export class ModalApplicationSettingsComponent implements OnInit {
 
   @Output() changeStateSettingsModal = new EventEmitter<Boolean>();
 
-  user: User;
+  user: ReplyUser;
   settingsMenu = [
     {
       name: 'Aplication', options: [
@@ -126,7 +126,7 @@ export class ModalApplicationSettingsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.user = this.authenticationService.currentUserValue;
+    this.user = null;
     this.selectedMenuItem = 0;
 
     this.profileForm = this.fb.group({
