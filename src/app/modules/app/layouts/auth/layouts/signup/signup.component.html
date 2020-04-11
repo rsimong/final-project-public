@@ -3,15 +3,15 @@
     <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" autocomplete="off">
       <label>
         <span>Username</span>
-        <input type="text" placeholder="Username" formControlName="user" name="user" autocomplete="off" />
+        <input type="text" placeholder="Username" formControlName="username" name="username" autocomplete="off" />
       </label>
       <label>
         <span>Password</span>
-        <input type="password" placeholder="Password" formControlName="pass" name="pass" autocomplete="off" />
+        <input type="password" placeholder="Password" formControlName="password" name="password" autocomplete="off" />
       </label>
       <label>
         <span>Confirm Password</span>
-        <input type="password" placeholder="Confirm Password" formControlName="confirmPass" name="confirm-pass"
+        <input type="password" placeholder="Confirm Password" formControlName="repeat_password" name="repeat_password"
           autocomplete="off" />
       </label>
       <button type="submit">Sign Up</button>

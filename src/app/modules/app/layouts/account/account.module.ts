@@ -8,6 +8,9 @@ import { AccountRoutingModule } from './account-routing.module';
 /* Import Shared Module */
 import { SharedModule } from '@shared/shared.module';
 
+/* Import Services */
+import { UserService } from '@shared/services/user.service';
+
 /* Import Components */
 import { AccountComponent } from './account.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -18,6 +21,7 @@ import { SearcherComponent } from './components/searcher/searcher.component';
 /* Layouts */
 import { DashboardComponent } from './layouts/dashboard/dashboard.component';
 import { MailComponent } from './layouts/views/mail/mail.component';
+import { ChatComponent } from './layouts/views/chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -27,13 +31,17 @@ import { MailComponent } from './layouts/views/mail/mail.component';
     ModalConnectAccountComponent,
     ModalApplicationSettingsComponent,
     SearcherComponent,
-    MailComponent
+    MailComponent,
+    ChatComponent
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     AccountRoutingModule,
     SharedModule
+  ],
+  providers: [
+    UserService
   ]
 })
 export class AccountModule { }

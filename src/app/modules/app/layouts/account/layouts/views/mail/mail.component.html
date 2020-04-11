@@ -48,68 +48,195 @@
       </div>
     </div>
     <div id="tm--fc--mail-list">
-      <div id="tm--fc--ml--header" class="row">
-        <div class="col">
-          <div id="ml--header--checkbox-dropdown">
-            <div class="ml--header--cd--box">
-              <i class="far fa-square"></i>
-              <i class="material-icons">keyboard_arrow_down</i>
+      <div id="tm--fc--ml--list">
+        <div id="tm--fc--ml--header" class="row">
+          <div class="col">
+            <div id="ml--header--checkbox-dropdown">
+              <div class="ml--header--cd--box">
+                <i class="far fa-square"></i>
+                <i class="material-icons">keyboard_arrow_down</i>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div id="ml--header--filter-by-state">
+              <ul>
+                <li class="active">All</li>
+                <li>Unread</li>
+                <li>Important</li>
+              </ul>
             </div>
           </div>
         </div>
-        <div class="col">
-          <div id="ml--header--filter-by-state">
-            <ul>
-              <li class="active">All</li>
-              <li>Unread</li>
-              <li>Important</li>
-            </ul>
-          </div>
-          <div id="ml--header--pagination">
-            <div id="pagination--arrow-left" [ngClass]="{'is-disabled': pagination.page === 1}">
-              <i class="material-icons">keyboard_arrow_left</i>
-            </div>
-            <div id="pagination--pages">
-              <span>{{ '1-50' }} pages</span>
-            </div>
-            <div id="pagination--arrow-right" [ngClass]="{'is-disabled': pagination.pages === pagination.page}">
-              <i class="material-icons">keyboard_arrow_right</i>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="tm--fc--ml--main">
-        <ng-container *ngFor="let group of messagesGroups">
-          <div class="msg-group">
-            <ul>
-              <ng-container *ngFor="let mail of group">
-                <li class="mg--message">
-                  <div class="mg--message--box">
-                    <div class="mg--message--selector">
-                      <i class="far fa-square"></i>
-                    </div>
-                    <div class="mg--message--transmitter">
-                      <div class="mg--user-details">
-                        <div class="mg--user-details--avatar">
-                          <app-avatar-image [bgValue]="mail.from"></app-avatar-image>
+        <div id="tm--fc--ml--main">
+          <ng-container *ngFor="let group of messagesGroups; let indexGroup = index">
+            <div class="msg-group">
+              <ul>
+                <ng-container *ngFor="let mail of group; let indexMail = index">
+                  <li class="mg--message"
+                    [ngClass]="{'is-open': indexGroup === messageOpened[0] && indexMail === messageOpened[1]}">
+                    <div class="mg--message--box" (click)="readMessage(indexGroup, indexMail)">
+                      <div class="mg--message--col-left">
+                        <div class="mg--message--selector">
+                          <i class="far fa-square"></i>
                         </div>
-                        <div class="mg--user-details--name">
-                          <span>{{ mail.from }}</span>
+                      </div>
+                      <div class="mg--message--col-right">
+                        <div class="mg--message--header">
+                          <div class="mg--message--transmitter">
+                            <div class="mg--user-details">
+                              <div class="mg--user-details--avatar">
+                                <app-avatar-image [bgValue]="mail.Sender.EmailAddress.Name"></app-avatar-image>
+                              </div>
+                              <div class="mg--user-details--name">
+                                <span>{{ mail.Sender.EmailAddress.Name }}</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="mg--message--date">
+                            <span>{{ getDateWithFormatMailList(mail.ReceivedDateTime) }}</span>
+                          </div>
+                        </div>
+                        <div class="mg--message--body">
+                          <div class="mg--message--subject">
+                            <p>{{ mail.Subject }}</p>
+                          </div>
+                          <div class="mg--message--content">
+                            <p>{{ getPreviewTextMessage(mail.BodyPreview) || '' }}</p>
+                          </div>
                         </div>
                       </div>
                     </div>
-                    <div class="mg--message--content">
-                      <p><strong>{{ mail.subject }}</strong> {{ mail.body[0] || '' }}</p>
-                    </div>
-                    <div class="mg--message--date">
-                      <span>{{ '9 Oct' }}</span>
-                    </div>
-                  </div>
-                </li>
-              </ng-container>
-            </ul>
+                  </li>
+                </ng-container>
+              </ul>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+      <div id="tm--fc--ml--mail">
+        <div class="mail-preview">
+          <div class="mp--header">
+            <div class="mp--transmitter">
+              <div class="mp--t-details">
+                <div class="mp--t-details--avatar">
+                  <app-avatar-image
+                    [bgValue]="messagesGroups[messageOpened[0]][messageOpened[1]].Sender.EmailAddress.Name">
+                  </app-avatar-image>
+                </div>
+                <div class="mp--t-details--name">
+                  <span>{{ messagesGroups[messageOpened[0]][messageOpened[1]].Sender.EmailAddress.Name || '' }}</span>
+                </div>
+              </div>
+            </div>
+            <div class="mp--more-options">
+              <div class="mp--reception-date">
+                <span>{{ getDateWithFormatMailContent(messagesGroups[messageOpened[0]][messageOpened[1]].ReceivedDateTime) }}</span>
+              </div>
+              <div class="mp--actions">
+                <ul>
+                  <li>
+                    <i class="material-icons">reply</i>
+                  </li>
+                  <li>
+                    <i class="material-icons">star_border</i>
+                  </li>
+                  <li>
+                    <i class="material-icons">local_printshop</i>
+                  </li>
+                  <li>
+                    <i class="material-icons">more_vert</i>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
-        </ng-container>
+          <div class="mp--body">
+            <div class="mp--c--subject">
+              <h5>{{ messagesGroups[messageOpened[0]][messageOpened[1]].Subject || '' }}</h5>
+            </div>
+            <div class="mp--c--content">
+              <pre [innerHTML]="messagesGroups[messageOpened[0]][messageOpened[1]].Body.Content"></pre>
+            </div>
+          </div>
+          <div class="mp--footer">
+            <div class="mp--reply-form">
+              <div class="mp--rf--header">
+                <h6>Reply</h6>
+              </div>
+              <div class="mp--rf--body">
+                <div class="mp--rf--receivers">
+                  <ul class="receivers-list">
+                    <li class="rl--receiver">
+                      <app-avatar-image
+                        [bgValue]="messagesGroups[messageOpened[0]][messageOpened[1]].Sender.EmailAddress.Name">
+                      </app-avatar-image>
+                    </li>
+                  </ul>
+                </div>
+                <div class="mp--rf--form">
+                  <form [formGroup]="mailForm" (ngSubmit)="sendReply()" autocomplete="off">
+                    <div class="f--header">
+                      <div class="f--header-main">
+                        <div class="f--reply-type">
+                          <i class="material-icons">
+                            reply
+                          </i>
+                        </div>
+                        <div class="f--reply-to">
+                          <ul>
+                            <li>
+                              <span>{{ messagesGroups[messageOpened[0]][messageOpened[1]].Sender.EmailAddress.Name }}</span>
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="f--reply-other-members"></div>
+                      </div>
+                    </div>
+                    <div class="f--body">
+                      <textarea
+                        placeholder="Write something to {{ messagesGroups[messageOpened[0]][messageOpened[1]].Sender.EmailAddress.Name }}..."
+                        formControlName="body" name="body"></textarea>
+                    </div>
+                    <div class="f--options">
+                      <ul>
+                        <li>
+                          <ul>
+                            <li>
+                              <i class="material-icons">text_format</i>
+                            </li>
+                            <li>
+                              <i class="material-icons">attach_file</i>
+                            </li>
+                            <li>
+                              <i class="material-icons">insert_emoticon</i>
+                            </li>
+                          </ul>
+                        </li>
+                        <li>
+                          <ul>
+                            <li>
+                              <i class="material-icons">delete</i>
+                            </li>
+                            <li>
+                              <i class="material-icons">more_vert</i>
+                            </li>
+                            <li>
+                              <button type="submit" class="btn btn-primary btn-with-icon btn-submit">
+                                <i class="fab fa-telegram-plane"></i>
+                                <span>Send</span>
+                              </button>
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

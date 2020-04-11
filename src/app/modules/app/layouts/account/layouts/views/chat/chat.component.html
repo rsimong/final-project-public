@@ -1,0 +1,129 @@
+<div id="template-chat">
+  <div id="tc--body">
+    <div id="tc--col--channels-list">
+      <div id="ccl--header"></div>
+      <div id="ccl--main">
+        <div id="ccl--channels-list">
+          <div class="channels-group" [ngClass]="{'is-typing': groupChannelsSearcherActive}">
+            <div class="cg--header">
+              <div class="cg--title-searcher">
+                <form [formGroup]="filterChannelGroups">
+                  <div class="btn-icon">
+                    <button type="submit">
+                      <i class="material-icons">search</i>
+                    </button>
+                  </div>
+                  <div class="input-search">
+                    <input type="text" placeholder="Group Channels" name="groupChannels" formControlName="groupChannels"
+                      (focus)="setGroupChannelsSearcherActive(true)" (blur)="setGroupChannelsSearcherActive(false)">
+                  </div>
+                </form>
+              </div>
+              <div class="cg--add-new-channel">
+                <button type="button">
+                  <i class="material-icons">add_circle_outline</i>
+                </button>
+              </div>
+            </div>
+            <div class="cg--content">
+              <ul>
+                <li>
+                  <div class="channel">
+                    Channel #1
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="tc--col--chat">
+      <div id="cc--header">
+        <div id="channel-details">
+          <div id="cd--channel-name">
+            <h2>{{ channelOpened?.name || '' }}</h2>
+          </div>
+          <div id="cd--channel-info">
+            <ng-container *ngIf="channelOpened?.is_channel; then groupDetails; else privateDetails"></ng-container>
+            <ng-template #groupDetails>
+              <ul id="info-list">
+                <li class="il--item">
+                  <div class="il--item--box">
+                    <div class="il--item--icon">
+                      <ng-container *ngIf="!channelOpened?.is_mpim; then channelUnpinned; else channelPinned">
+                      </ng-container>
+                      <ng-template #channelUnpinned>
+                        <i class="material-icons-round">star_border</i>
+                      </ng-template>
+                      <ng-template #channelPinned>
+                        <i class="material-icons-round">star</i>
+                      </ng-template>
+                    </div>
+                  </div>
+                </li>
+                <li class="il--item">
+                  <div class="il--item--box">
+                    <div class="il--item--icon">
+                      <i class="material-icons-round">person</i>
+                    </div>
+                    <div class="il--item--value">
+                      <span>{{ channelOpened?.members?.length }}</span>
+                    </div>
+                  </div>
+                </li>
+                <li class="il--item">
+                  <div class="il--item--box">
+                    <div class="il--item--value">
+                      <span>{{ channelOpened?.topic?.value }}</span>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </ng-template>
+            <ng-template #privateDetails></ng-template>
+          </div>
+        </div>
+      </div>
+      <div id="cc--content">
+        <div id="cc--chat-history">
+          <div id="cc--ch--chat">
+            <div>
+              <div class="message-group">
+                <ng-container *ngFor="let message of messageHistory">
+                  <div class="message" [ngClass]="{'stacked-message': message.stack}">
+                    <div class="message-box">
+                      <div class="message--left-col">
+                        <ng-container *ngIf="!message.stack">
+                          <div class="message--avatar">
+                            <app-avatar-image [bgValue]="message.user"></app-avatar-image>
+                          </div>
+                        </ng-container>
+                      </div>
+                      <div class="message--right-col">
+                        <ng-container *ngIf="!message.stack">
+                          <div class="message--details">
+                            <div class="message--user">
+                              <p>{{ message.user }}</p>
+                            </div>
+                            <div class="message--time">
+                              <p>{{ getDateWithFormat(message.ts,'HH:mm A') }}</p>
+                            </div>
+                          </div>
+                        </ng-container>
+                        <div class="message--content">
+                          <p>{{ message.text }}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+          <div id="cc--ch--form"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
