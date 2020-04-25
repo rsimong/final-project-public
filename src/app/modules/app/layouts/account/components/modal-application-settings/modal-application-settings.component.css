@@ -71,7 +71,6 @@
   width: calc(100% - 260px);
   padding: 0;
   overflow: hidden;
-  overflow-y: auto;
 }
 
 .modal>.m--content>.m--content-left>.sections,
@@ -166,7 +165,15 @@
 /* Settings :: General Settings */
 #ap-general-settings {
   width: 100%;
+  max-height: 100%;
   padding: 40px;
+  overflow: hidden;
+  overflow-y: auto;
+  z-index: 1;
+}
+
+#ap-general-settings>.sb--body {
+  padding-bottom: 100px;
 }
 
 #ap-general-settings>.sb--body>.sb--content>.settings--group,
@@ -175,12 +182,15 @@
 #ap-general-settings>.sb--body>.sb--content>.settings--group>.sg--content,
 #ap-general-settings>.sb--body>.sb--content>.settings--group>.sg--content>form,
 #ap-general-settings>.sb--body>.sb--content>.settings--group>.sg--content>form>label,
-#ap-general-settings>.sb--body>.sb--content>.settings--group>.sg--content>form>label>* {
+#ap-general-settings>.sb--body>.sb--content>.settings--group>.sg--content>form>label>*,
+#ap-general-settings>.sb--body>.sb--content>.settings--group>.sg--footer,
+#ap-general-settings>.sb--body>.sb--content>.settings--group>.sg--footer>.sg--actions {
   width: 100%;
 }
 
 #ap-general-settings>.sb--body>.sb--content>.settings--group {
   padding: 40px 0;
+  padding-bottom: 15px;
 }
 
 #ap-general-settings>.sb--body>.sb--content>.settings--group:not(:last-of-type) {
@@ -300,6 +310,19 @@
 #ap-general-settings>.sb--body>.sb--content>.settings--group>.sg--content>form>label>input[type=checkbox]:checked+.input-switch>div>i {
   transform: translate(-50%, -50%) scale(1);
   opacity: 1;
+}
+
+#ap-general-settings>.sb--body>.sb--content>.settings--group>.sg--footer {
+  margin-top: 20px;
+  display: block;
+}
+
+#ap-general-settings>.sb--body>.sb--content>.settings--group>.sg--footer>.sg--actions {
+  text-align: right;
+}
+
+#ap-general-settings>.sb--body>.sb--content>.settings--group>.sg--footer>.sg--actions>button {
+  display: inline-block;
 }
 
 
@@ -597,27 +620,41 @@
   overflow: hidden;
 }
 
-#ap-profile>.ap-profile--confirm-msg {
-  width: 60%;
+#ap-profile>.ap-profile--confirm-msg,
+#ap-general-settings+.ap-general-settings--confirm-msg {
+  width: 100%;
   left: 50%;
   bottom: 0;
   padding: 20px;
-  margin-bottom: 0px;
-  border-radius: 6px;
-  transform: translate(-50%, 100%);
   transition: 0.4s;
-  box-shadow: 0 6px 15px -2px #d7d7d7;
-  background-color: white;
-  opacity: 0;
+  transform: translate(-50%, 100%);
+  background-color: #5a77fe;
   position: absolute;
+  opacity: 0;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
-#ap-profile.is-edited>.ap-profile--confirm-msg {
-  margin-bottom: 20px;
+#ap-profile.is-edited>.ap-profile--confirm-msg,
+#ap-general-settings.is-edited+.ap-general-settings--confirm-msg {
   transform: translate(-50%, 0%);
   opacity: 1;
 }
 
+#ap-profile>.ap-profile--confirm-msg>p,
+#ap-general-settings+.ap-general-settings--confirm-msg>p {
+  color: white;
+}
+
+#ap-profile>.ap-profile--confirm-msg>form>button,
+#ap-general-settings+.ap-general-settings--confirm-msg>form>button {
+  box-shadow: none;
+  background-color: rgba(255, 255, 255, 0.1);
+}
 
 /* Setting :: Account Management */
 #ap-account-management {

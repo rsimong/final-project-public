@@ -22,6 +22,7 @@ import { SearcherComponent } from './components/searcher/searcher.component';
 import { DashboardComponent } from './layouts/dashboard/dashboard.component';
 import { MailComponent } from './layouts/views/mail/mail.component';
 import { ChatComponent } from './layouts/views/chat/chat.component';
+import { ReplyComponent } from './layouts/reply/reply.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ChatComponent } from './layouts/views/chat/chat.component';
     ModalApplicationSettingsComponent,
     SearcherComponent,
     MailComponent,
-    ChatComponent
+    ChatComponent,
+    ReplyComponent
   ],
   imports: [
     CommonModule,

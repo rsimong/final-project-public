@@ -1,7 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { environment } from '@env';
 
 // Import Models
-import { Apis } from '@models/apis';
+import { ReplyApi } from '@models/replyApi';
 
 // Import Services
 import { ApisService } from "@shared/services/apis.service";
@@ -17,20 +18,21 @@ export class ModalConnectAccountComponent implements OnInit {
 
   loading: boolean = false;
   loadingError: boolean = false;
-  integrations: Apis[] = [];
+  integrations: ReplyApi[] = [];
+
+  windowRequestAccessToken: Window;
 
   constructor(private apisServices: ApisService) {
-    this.getAllApis();
   }
 
   ngOnInit() {
     this.loading = true;
-
+    this.getAllApis();
   }
 
   getAllApis() {
     this.apisServices.getAll().subscribe(
-      (data: Apis[]) => {
+      (data: ReplyApi[]) => {
         this.integrations = data;
       },
       (error) => {
@@ -46,6 +48,21 @@ export class ModalConnectAccountComponent implements OnInit {
 
   closeStoreModal() {
     this.changeStateStoreModal.emit(false);
+  }
+
+  openWindowRequestAccessToken(apiId: string) {
+    this.apisServices.requestAccessToken(apiId)
+      .then((value: any) => {
+        this.windowRequestAccessToken = window.open(`${value.uri}`, '_blank', "toolbar=no,scrollbars=yes,resizable=yes,width=600,height=600");
+        const self = this;
+        const pollTimer = window.setInterval(function () {
+          if (self.windowRequestAccessToken.closed !== false) { // !== is required for compatibility with Opera
+            window.clearInterval(pollTimer);
+            console.log('Pop-up closed!');
+          }
+        }, 200);
+      })
+      .catch((err) => console.log(err));
   }
 
 }

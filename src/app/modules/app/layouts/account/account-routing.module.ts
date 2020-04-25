@@ -5,8 +5,13 @@ import { AccountComponent } from './account.component';
 import { DashboardComponent } from "./layouts/dashboard/dashboard.component";
 import { MailComponent } from "./layouts/views/mail/mail.component";
 import { ChatComponent } from './layouts/views/chat/chat.component';
+import { ReplyComponent } from './layouts/reply/reply.component';
 
 const routes: Routes = [
+  {
+    path: 'reply',
+    component: ReplyComponent
+  },
   {
     path: '',
     component: AccountComponent,

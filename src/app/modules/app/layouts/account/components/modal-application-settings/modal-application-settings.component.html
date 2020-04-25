@@ -27,7 +27,7 @@
     <div class="m--content-right">
       <ng-container
         *ngIf="selectedMenuItem === 0 || selectedMenuItem === 1 || selectedMenuItem === 2 || selectedMenuItem === 3">
-        <div id="ap-general-settings" class="settings-box">
+        <div id="ap-general-settings" class="settings-box" [ngClass]="{'is-edited': generalSettingsEdited}">
           <div class="sb--header">
             <div class="sb--header--left">
               <div class="sb--header--seacher">
@@ -47,31 +47,23 @@
                   </h3>
                 </div>
                 <div class="sg--content">
-                  <form [formGroup]="profileForm">
+                  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
                     <ng-container formGroupName="settings">
                       <label>
                         <span>Aplication Language</span>
                         <select name="language" formControlName="language">
-                          <option value="en">English (EN)</option>
-                          <option value="es">Español (ES)</option>
+                          <option value="en-EN">English (EN)</option>
+                          <option value="es-ES">Español (ES)</option>
                         </select>
                       </label>
                     </ng-container>
                   </form>
                 </div>
-              </div>
-              <!-- <div class="settings--group">
-                <div class="sg--content">
-                  <form [formGroup]="profileForm">
-                    <label>
-                      <span>Themes</span>
-                      <select name="language" formControlName="language">
-                        <option value="en">English (EN)</option>
-                      </select>
-                    </label>
-                  </form>
+                <div class="sg--footer">
+                  <div class="sg--actions">
+                  </div>
                 </div>
-              </div> -->
+              </div>
               <div class="settings--group">
                 <div class="sg--head">
                   <h3>
@@ -79,12 +71,13 @@
                   </h3>
                 </div>
                 <div class="sg--content">
-                  <form [formGroup]="profileForm">
+                  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
                     <ng-container formGroupName="settings">
                       <ng-container formGroupName="accessibility">
                         <label>
                           <span>Font</span>
                           <select name="font" formControlName="fontFamily">
+                            <option value="default">Default (Roboto)</option>
                             <option value="roboto">Roboto</option>
                           </select>
                         </label>
@@ -112,6 +105,10 @@
                     </ng-container>
                   </form>
                 </div>
+                <div class="sg--footer">
+                  <div class="sg--actions">
+                  </div>
+                </div>
               </div>
               <div class="settings--group">
                 <div class="sg--head">
@@ -120,24 +117,34 @@
                   </h3>
                 </div>
                 <div class="sg--content">
-                  <form [formGroup]="changePassForm">
+                  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
                     <label>
                       <span>Old Password</span>
-                      <input type="password" name="old-pwd" formControlName="oldPwd">
+                      <input type="password" name="old_password" formControlName="old_password">
                     </label>
                     <label>
                       <span>New Password</span>
-                      <input type="password" name="new-pwd" formControlName="newPwd">
+                      <input type="password" name="password" formControlName="password">
                     </label>
                     <label>
                       <span>Confirm New Password</span>
-                      <input type="password" name="confirm-new-pwd" formControlName="confirmNewPwd">
+                      <input type="password" name="repeat_password" formControlName="repeat_password">
                     </label>
                   </form>
+                </div>
+                <div class="sg--footer">
+                  <div class="sg--actions">
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+        <div class="ap-general-settings--confirm-msg">
+          <p>Changes have been detected. Do you want to save them?</p>
+          <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+          </form>
         </div>
       </ng-container>
       <ng-container *ngIf="selectedMenuItem === 4">
@@ -147,9 +154,9 @@
               <div class="zone-pointer">
                 <div class="zp-title"><span>Avatar</span></div>
                 <div class="zp-form">
-                  <form [formGroup]="profileForm">
+                  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
                     <label>
-                      <input type="file" name="avatar" formControlName="avatar" />
+                      <input type="file" name="avatar" (change)="uploadFile($event)" />
                       <div class="dad-zone">
                         <div class="msg-dad">
                           <div class="msg-dad--icon">
@@ -169,7 +176,7 @@
               <div class="zone-pointer">
                 <div class="zp-title"><span>Email</span></div>
                 <div class="zp-form">
-                  <form [formGroup]="profileForm">
+                  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
                     <label>
                       <input type="mail" name="email" placeholder="Email" formControlName="email" />
                     </label>
@@ -178,7 +185,9 @@
               </div>
             </div>
             <div class="preview-profile-card">
-              <div class="ppc--avatar" [style.background-image]="'url(' + user.avatar + ')' | safe: 'style'"></div>
+              <div class="ppc--avatar"
+                [style.background-image]="'url(' + ( user.avatar | pfile: 'image/profile' ) + ')' | safe: 'style'">
+              </div>
               <div class="ppc--details">
                 <div class="ppc--details--box">
                   <h5>{{ profileForm.value.name || user.name }} {{ profileForm.value.surnames || user.surnames }}</h5>
@@ -190,7 +199,7 @@
               <div class="zone-pointer">
                 <div class="zp-title"><span>Name and Surnames</span></div>
                 <div class="zp-form">
-                  <form [formGroup]="profileForm">
+                  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
                     <label>
                       <input type="text" name="name" placeholder="Name" formControlName="name" />
                     </label>
@@ -204,6 +213,9 @@
           </div>
           <div class="ap-profile--confirm-msg">
             <p>Changes have been detected. Do you want to save them?</p>
+            <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+              <button type="submit" class="btn btn-primary">Save Changes</button>
+            </form>
           </div>
         </div>
       </ng-container>
@@ -250,11 +262,13 @@
                       <li class="al--item">
                         <div class="account">
                           <div class="a--type-cell">
-                            <i class="{{ getIconByType(account.type) }}"></i>
+                            <i class="{{ account.api.logo.src }}"></i>
                           </div>
                           <div class="a--avatar-cell">
                             <div class="avatar">
-                              <div [style.background-image]="'url(' + account.avatar + ')' | safe: 'style'"></div>
+                              <div
+                                [style.background-image]="'url(' + ( account.avatar | pfile: 'image/profile' ) + ')' | safe: 'style'">
+                              </div>
                             </div>
                           </div>
                           <div class="a--name-cell">

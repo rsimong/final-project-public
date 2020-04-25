@@ -25,7 +25,7 @@ export class AccountComponent implements OnInit {
   ngOnInit() {
     this.userService.getProfile().subscribe(
       (user: ReplyUser) => {
-        console.log(user);
+        this.authenticationService.setCurrentUser(user);
       }
     );
   }
@@ -37,9 +37,5 @@ export class AccountComponent implements OnInit {
   toogleSettingsModal() {
     this.showSettingsModal = !this.showSettingsModal;
   }
-
-  // logout() {
-  //   this.authenticationService.logout();
-  // }
 
 }
