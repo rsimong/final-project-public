@@ -20,7 +20,7 @@ export class ModalConnectAccountComponent implements OnInit {
   loadingError: boolean = false;
   integrations: ReplyApi[] = [];
 
-  windowRequestAccessToken: Window;
+  windowRequestAccessToken: Window = null;
 
   constructor(private apisServices: ApisService) {
   }
@@ -51,18 +51,20 @@ export class ModalConnectAccountComponent implements OnInit {
   }
 
   openWindowRequestAccessToken(apiId: string) {
-    this.apisServices.requestAccessToken(apiId)
-      .then((value: any) => {
-        this.windowRequestAccessToken = window.open(`${value.uri}`, '_blank', "toolbar=no,scrollbars=yes,resizable=yes,width=600,height=600");
-        const self = this;
-        const pollTimer = window.setInterval(function () {
-          if (self.windowRequestAccessToken.closed !== false) { // !== is required for compatibility with Opera
-            window.clearInterval(pollTimer);
-            console.log('Pop-up closed!');
-          }
-        }, 200);
-      })
-      .catch((err) => console.log(err));
+    if (!this.windowRequestAccessToken) {
+      this.apisServices.requestAccessToken(apiId)
+        .then((value: any) => {
+          this.windowRequestAccessToken = window.open(`${value.uri}`, '_blank', "toolbar=no,scrollbars=yes,resizable=yes,width=600,height=600");
+          const self = this;
+          const pollTimer = window.setInterval(function () {
+            if (self.windowRequestAccessToken.closed !== false) { // !== is required for compatibility with Opera
+              window.clearInterval(pollTimer);
+              self.windowRequestAccessToken = null;
+            }
+          }, 200);
+        })
+        .catch((err) => console.log(err));
+    }
   }
 
 }
