@@ -5,6 +5,7 @@ import { SimplifyLogoComponent } from '@shared/components/simplify-logo/simplify
 import { SafePipe } from './pipes/safe.pipe';
 import { AvatarImageComponent } from './components/avatar-image/avatar-image.component';
 import { ErrorDevelopingComponent } from './components/error-developing/error-developing.component';
+import { PfilePipe } from './pipes/pfile.pipe';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { ErrorDevelopingComponent } from './components/error-developing/error-de
     SimplifyLogoComponent,
     SafePipe,
     AvatarImageComponent,
-    ErrorDevelopingComponent
+    ErrorDevelopingComponent,
+    PfilePipe
   ],
   imports: [
     CommonModule
@@ -21,7 +23,8 @@ import { ErrorDevelopingComponent } from './components/error-developing/error-de
     SimplifyLogoComponent,
     AvatarImageComponent,
     ErrorDevelopingComponent,
-    SafePipe
+    SafePipe,
+    PfilePipe
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
