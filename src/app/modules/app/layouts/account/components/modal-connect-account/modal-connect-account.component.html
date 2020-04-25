@@ -67,19 +67,17 @@
             <ng-container *ngFor="let api of integrations">
               <li class="al--item">
                 <div class="api-card">
-                  <div class="api-card--image" [style.backgroundColor]="api.brandColor">
-                    <i [attr.class]="api.icon.src"></i>
+                  <div class="api-card--image" [style.backgroundColor]="api?.brandColor">
+                    <i [attr.class]="api?.logo?.src"></i>
                   </div>
                   <div class="api-card--details">
                     <div class="api-card--info">
-                      <h4 class="api-card--name">{{ api.name }}</h4>
-                      <p class="api-card--description">{{ api.description }}</p>
+                      <h4 class="api-card--name">{{ api?.name }}</h4>
+                      <p class="api-card--description">{{ api?.short_description }}</p>
                     </div>
                     <div class="api-card--actions">
-                      <button class="btn btn-primary" type="button">Connect</button>
-                      <button class="btn btn-only-icon" type="button">
-                        <i class="fas fa-info"></i>
-                      </button>
+                      <button class="btn btn-primary" type="button"
+                        (click)="openWindowRequestAccessToken(api?._id)">Connect</button>
                     </div>
                   </div>
                 </div>
