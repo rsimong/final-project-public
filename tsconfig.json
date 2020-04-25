@@ -24,6 +24,7 @@
       "@modules/*": ["app/modules/*"],
       "@shared/*": ["app/shared/*"],
       "@models/*": ["app/shared/models/*"],
+      "@helpers/*": ["app/shared/helpers/*"],
       "@core/*": ["app/core/*"],
       "@assets/*": ["assets/*"],
       "@media/*": ["assets/media/*"],
