@@ -31,7 +31,7 @@ export class SidebarComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.user = null; // this.authenticationService.currentUserValue;
+    this.authenticationService.getCurrentUserValue().subscribe((value: ReplyUser) => this.user = value);
     this.setMainMenu();
   }
 
@@ -94,6 +94,10 @@ export class SidebarComponent implements OnInit {
 
   openSettingsModal() {
     this.changeStateSettingsModal.emit(true);
+  }
+
+  logout() {
+    this.authenticationService.logout();
   }
 
 }
