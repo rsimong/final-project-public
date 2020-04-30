@@ -1,8 +1,14 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
+// Import Services
 import { AuthenticationService } from '@core/authentication/authentication.service';
-import { ReplyUser } from '@app/shared/models/replyUser';
+
+// Import Models
+import { ReplyUser } from '@models/replyUser';
 import { Account } from '@models/account';
+
+// Import fakeData
+const UserFake = require('@fakedb/user.json');
 
 @Component({
   selector: 'app-sidebar',
@@ -22,7 +28,7 @@ export class SidebarComponent implements OnInit {
 
   routesByAccountType = {
     'facebook': '',
-    'gmail': 'mail/:idAccount',
+    'outlook': 'mail/:idAccount',
     'slack': 'chat/:idAccount'
   };
 
@@ -47,8 +53,8 @@ export class SidebarComponent implements OnInit {
     const sections = [];
     const mainMenuTemp = {};
     const mainMenuDefinitive = [];
-    if (!this.user) return;
-    this.user.accounts.forEach((account: Account) => {
+    if (!UserFake) return;
+    UserFake.accounts.forEach((account: any) => {
       const isNew = sections.find((section) => section === account.type);
       if (!isNew) {
         sections.push(account.type);

@@ -23,10 +23,9 @@
 }
 
 .searcher>form>label>i {
-  width: 24px;
   margin-right: 10px;
   transition: margin 0.4s;
-  opacity: 0.4;
+  opacity: 0.5;
 }
 
 .searcher.is-minified>form>label>i {
