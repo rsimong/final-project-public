@@ -12,7 +12,7 @@
   width: 450px;
   max-width: 100%;
   top: 50%;
-  left: 50%;
+  left: calc(50% - 44px);
   transform: translate(-50%, -50%);
   position: absolute;
 }
@@ -20,7 +20,7 @@
 .error>.error-img,
 .error>.error-img>.error-icon {
   margin: 0 auto;
-  font-size: 96px;
+  font-size: 129px;
   color: #5a77fe;
   text-align: center;
   display: block;
@@ -29,24 +29,6 @@
 .error>.error-img {
   max-width: 50%;
   margin-bottom: 30px;
-}
-
-.error>.error-img>.error-icon:nth-child(2) {
-  left: 25%;
-  bottom: 30px;
-  font-size: 48px;
-  transform: translateX(-75%);
-  opacity: 0.4;
-  position: absolute;
-}
-
-.error>.error-img>.error-icon:nth-child(3) {
-  right: 25%;
-  bottom: 50px;
-  font-size: 36px;
-  transform: translateX(75%);
-  opacity: 0.2;
-  position: absolute;
 }
 
 .error>.error-title {
