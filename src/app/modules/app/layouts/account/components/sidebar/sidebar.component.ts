@@ -8,7 +8,7 @@ import { ReplyUser } from '@models/replyUser';
 import { Account } from '@models/account';
 
 // Import fakeData
-const UserFake = require('@fakedb/user.json');
+import UserFake from '@fakedb/user.json';
 
 @Component({
   selector: 'app-sidebar',
