@@ -10,40 +10,20 @@
   "notifications": [],
   "accounts": [{
       "_id": "000000000001",
-      "type": "gmail",
-      "avatar": "https://cdn.pixabay.com/photo/2017/09/01/21/53/blue-2705642_1280.jpg",
-      "user": "Julia Martínez",
-      "username": "jmartinez@gmail.com",
+      "type": "outlook",
+      "avatar": "",
+      "user": "Administració LaSalle",
+      "username": "lasalle@gracia.lasalle.com",
       "quickAccess": true,
       "news": true,
-      "hasError": false
-    },
-    {
-      "_id": "000000000002",
-      "type": "slack",
-      "avatar": "https://cdn.pixabay.com/photo/2016/01/19/17/48/woman-1149911_1280.jpg",
-      "user": "Jmartinez",
-      "username": "jmartinez@gmail.com",
-      "quickAccess": true,
-      "news": false,
       "hasError": false
     },
     {
       "_id": "000000000003",
       "type": "facebook",
       "avatar": "",
-      "user": "Julia M",
-      "username": "jmartinez123@outlook.com",
-      "quickAccess": false,
-      "news": false,
-      "hasError": false
-    },
-    {
-      "_id": "000000000004",
-      "type": "twitter",
-      "avatar": "",
-      "user": "Julia M",
-      "username": "jmartinez@outlook.com",
+      "user": "LaSalle Gracia",
+      "username": "lasallegracia@gracia.lasalle.com",
       "quickAccess": false,
       "news": false,
       "hasError": false
@@ -52,8 +32,8 @@
       "_id": "000000000005",
       "type": "facebook",
       "avatar": "",
-      "user": "Julia M",
-      "username": "jmartinez@outlook.com",
+      "user": "LaSalle",
+      "username": "lasalle@gracia.lasalle.com",
       "quickAccess": false,
       "news": false,
       "hasError": false

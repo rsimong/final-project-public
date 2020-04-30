@@ -31,7 +31,7 @@ export class AvatarImageComponent implements OnInit {
     } else {
       const valueCleaned = this.bgValue.substring(0, this.bgValue.search(/(?:@|\s|$)/));
       const color = `#${this.intToRGB(this.hashCode(valueCleaned))}`;
-      this.acronymName = valueCleaned.substring(0, 1).toUpperCase();
+      this.acronymName = valueCleaned.substring(0, 2).toUpperCase();
       this.colorValue = `${color}99`;
       this.backgroundColorValue = `${color}1f`;
     }

@@ -27,7 +27,7 @@
 
 .btn>i {
   margin-left: -3px;
-  margin-right: 6px;
+  margin-right: 9px;
   font-size: 18px;
 }
 
@@ -38,12 +38,24 @@
 
 .btn.btn-primary {
   color: white;
+  border-color: #5a77fe;
   background-color: #5a77fe;
   box-shadow: 0 5px 10px #dbdbdb;
 }
 
 .btn.btn-secondary {
+  border-color: #f4f4f4;
   background-color: #f0f0f0;
+}
+
+.btn.btn-outlined {
+  border-width: 1px;
+  border-style: solid;
+  background-color: transparent;
+}
+
+.btn.btn.btn-primary.btn-outlined {
+  color: #5a77fe;
 }
 
 .btn.btn-transparent {

@@ -402,7 +402,7 @@
 #ap-profile>.ap-profile--desktop-box>.right-box>.zone-pointer>.zp-title::before {
   content: '';
   width: calc(100% + 20px);
-  height: 2px;
+  height: 1px;
   top: 50%;
   transform: translate(0%, -50%);
   background-color: #5a77fe;
@@ -543,6 +543,7 @@
 }
 
 #ap-profile>.ap-profile--desktop-box>div>.zone-pointer>.zp-form>form>label>input[type=file]+.dad-zone>.msg-dad>.msg-dad--icon>i {
+  font-size: 24px;
   color: white;
 }
 
