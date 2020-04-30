@@ -3,6 +3,7 @@ import { environment } from '@env';
 
 // Import Models
 import { ReplyApi } from '@models/replyApi';
+import { ReplyAccessToken } from '@models/replyAccessToken';
 
 // Import Services
 import { ApisService } from "@shared/services/apis.service";
@@ -53,8 +54,10 @@ export class ModalConnectAccountComponent implements OnInit {
   openWindowRequestAccessToken(apiId: string) {
     if (!this.windowRequestAccessToken) {
       this.apisServices.requestAccessToken(apiId)
-        .then((value: any) => {
-          this.windowRequestAccessToken = window.open(`${value.uri}`, '_blank', "toolbar=no,scrollbars=yes,resizable=yes,width=600,height=600");
+        .then((value: ReplyAccessToken) => {
+          sessionStorage.setItem('APIRequested', value.api);
+          sessionStorage.setItem('request', value.requestType);
+          this.windowRequestAccessToken = window.open(`${value.request.uri}`, '_blank', "toolbar=no,scrollbars=yes,resizable=yes,width=500,height=600");
           const self = this;
           const pollTimer = window.setInterval(function () {
             if (self.windowRequestAccessToken.closed !== false) { // !== is required for compatibility with Opera
