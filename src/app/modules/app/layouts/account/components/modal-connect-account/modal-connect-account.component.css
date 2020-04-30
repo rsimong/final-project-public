@@ -170,7 +170,7 @@
 }
 
 .modal>.m--content>.m--content-right>.results>.results--content>.accounts-list>.al--item {
-  width: calc((100% - (8px * 2)) / 3);
+  width: 262px;
   margin-bottom: 8px;
   border-radius: 8px;
 }
